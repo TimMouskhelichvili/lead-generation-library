@@ -46,7 +46,7 @@ const getPlugins = () => {
  */
 module.exports = {
     context: __dirname,
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         path: Path.resolve(__dirname, 'dist'),
         filename: '[name].js'

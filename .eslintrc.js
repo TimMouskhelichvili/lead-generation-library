@@ -11,5 +11,11 @@ module.exports = {
     'plugins': [
         '@typescript-eslint',
         'jsdoc'
-    ]
+    ],
+    'settings': {
+        'react': {
+            'pragma': 'React',
+            'version': 'detect'
+        }
+    }
 };

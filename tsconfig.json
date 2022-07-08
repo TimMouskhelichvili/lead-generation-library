@@ -3,7 +3,8 @@
         "baseUrl": ".",
         "outDir": "./dist",
         "sourceMap": true,
-        "module": "commonjs",
+        "module": "ESNext",
+        "moduleResolution": "node",
         "target": "es6",
         "lib": [
             "es2018",
@@ -27,6 +28,7 @@
 		"paths": {
 			"*": ["*"]
 		},
+		"jsx": "react"
     },
     "include": [
         "src/**/*"

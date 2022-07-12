@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useStore } from 'src/context';
 
-export const Front = (): ReactElement => {
+export const Quiz = (): ReactElement => {
     const dispatch = useDispatch();
     const started = useStore(c => c.started);
 

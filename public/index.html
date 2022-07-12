@@ -10,7 +10,13 @@
 <body>
 	<div id="quiz"></div>
 	<script>
+		const config = {
+			abc: 'asdasd'
+		};
 
+		document.addEventListener('DOMContentLoaded', function() {
+			window.LeadGenerationLibrary.init(document.getElementById('quiz'), config);
+		}, false);
 	</script>
 </body>
 

@@ -1,21 +1,26 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import create, { StoreApi } from 'zustand';
-import { getDefaultState } from 'src/context/utils/defaults';
-import { IContext } from 'src/context/interfaces/IContext';
-import { Provider } from 'src/context';
-import { Front } from 'src/components';
+import { IConfiguration } from 'src/interfaces/IConfiguration';
+import { App } from 'src/components/app';
 
-const App = (): React.ReactElement => {
-    const createStore = (): StoreApi<IContext> => {
-        return create(() => getDefaultState());
-    };
+export class LeadGenerationLibrary {
 
-    return (
-        <Provider createStore={createStore}>
-            <Front />
-        </Provider>
-    );
-};
+    /**
+	 * Initializes the lead generation library.
+	 * @param {HTMLElement} element - The element.
+	 * @param {IConfiguration} config - The config.
+	 */
+    public init (element: HTMLElement, config: IConfiguration): void {
+        ReactDOM.render(<App config={config} />, element);
+    }
 
-ReactDOM.render(<App />, document.getElementById('quiz'));
+    /**
+     * Returns the version of the library.
+     */
+    public getVersion (): string {
+        return __VERSION__;
+    }
+
+}
+
+window.LeadGenerationLibrary = new LeadGenerationLibrary();

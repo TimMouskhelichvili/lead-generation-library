@@ -1,8 +1,10 @@
 import React from 'react';
 import create, { StoreApi } from 'zustand';
+import { ThemeProvider } from 'styled-components';
 import { getDefaultState } from 'src/context/utils/defaults';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IContext } from 'src/context/interfaces/IContext';
+import { getDefaultTheme } from 'src/theme';
 import { Quiz } from 'src/components/quiz';
 import { Provider } from 'src/context';
 
@@ -16,8 +18,10 @@ export const App = (props: IProps): React.ReactElement => {
     };
 
     return (
-        <Provider createStore={createStore}>
-            <Quiz />
-        </Provider>
+        <ThemeProvider theme={getDefaultTheme(props.config.theme)}>
+            <Provider createStore={createStore}>
+                <Quiz />
+            </Provider>
+        </ThemeProvider>
     );
 };

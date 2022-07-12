@@ -1,5 +1,12 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useStore } from 'src/context';
+import styled from 'styled-components';
+
+const Content = styled.div`
+	width: 100px;
+	height: 100px;
+	background: ${(p): string => p.theme.colors.primary}
+`;
 
 export const Quiz = (): ReactElement => {
     const dispatch = useDispatch();
@@ -10,6 +17,6 @@ export const Quiz = (): ReactElement => {
     }, []);
 	
     return (
-        <div>quiz {String(started)}</div>
+        <Content>quiz {String(started)}</Content>
     );
 };

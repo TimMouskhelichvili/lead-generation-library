@@ -1,6 +1,6 @@
-import { IContext } from 'src/context/interfaces/IContext';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
-import { getDefaultLocale, MyLocale } from 'src/locales/index';
+import { IContext } from 'src/context/interfaces/IContext';
+import { getDefaultLocale, MyLocale } from 'src/locale';
 
 /**
  * Returns the default state.

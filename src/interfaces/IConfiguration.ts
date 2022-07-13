@@ -1,4 +1,4 @@
-import { MyLanguage, MyLocale } from 'src/locales';
+import { MyLanguage, MyLocale } from 'src/locale';
 import { MyTheme } from 'src/theme';
 
 export interface IConfiguration {

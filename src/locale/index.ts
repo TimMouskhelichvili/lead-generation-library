@@ -1,11 +1,13 @@
-import { enLocales } from 'src/locales/languages/en';
+import { enLocale } from 'src/locale/languages/en';
+import { frLocale } from 'src/locale/languages/fr';
 import { configuration } from 'src/configuration';
 
 export const languages = {
-    en: enLocales
+    en: enLocale,
+    fr: frLocale
 };
 
-export type MyLocale = typeof enLocales;
+export type MyLocale = typeof enLocale;
 
 export type MyLanguage = keyof typeof languages;
 

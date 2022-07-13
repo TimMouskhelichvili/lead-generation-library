@@ -5,7 +5,7 @@ import { MyDefaultTheme } from 'src/theme';
  */
 const defaultColors = {
     border: '#ededed',
-    primary: '#BD4B4B'
+    primary: 'red'
 };
 
 /**

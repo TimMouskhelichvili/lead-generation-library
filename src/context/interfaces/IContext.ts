@@ -1,4 +1,4 @@
-import { MyLocale } from 'src/locales';
+import { MyLocale } from 'src/locale';
 
 export interface IContext {	
 	title: string;

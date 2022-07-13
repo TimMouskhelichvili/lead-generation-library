@@ -2,7 +2,9 @@
  * The default colors.
  */
 const defaultColors = {
+    background: '#fafafa',
     border: '#ededed',
+    color: '#181e1f',
     primary: '#BD4B4B'
 };
 

@@ -4,8 +4,10 @@ import { MyDefaultTheme } from 'src/theme';
  * The default colors.
  */
 const defaultColors = {
-    border: '#ededed',
-    primary: 'red'
+    background: '#181e1f',
+    border: '#232c2d',
+    color: '#f6fbfc',
+    primary: '#BD4B4B'
 };
 
 /**

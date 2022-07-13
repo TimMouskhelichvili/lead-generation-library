@@ -7,6 +7,8 @@ export const QuizContainer = styled.div`
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
     font-weight: 400;
 	letter-spacing: 0px;
+	color: ${(p): string => p.theme.colors.color};
+	background: ${(p): string => p.theme.colors.background};
 `;
 
 export const QuizRow = styled.div`

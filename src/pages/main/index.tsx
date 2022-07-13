@@ -22,7 +22,7 @@ export const Main = (): ReactElement => {
             <MainH1>{title}</MainH1>
             {image && (
                 <MainImageContainer>
-                    <MainImage src={image} />
+                    <MainImage src={image} alt={title} title={title} />
                 </MainImageContainer>
             )}
             {description && 

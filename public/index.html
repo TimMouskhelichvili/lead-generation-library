@@ -5,13 +5,30 @@
 	<title>Lead Generation Library</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+	<style>
+		body, html {
+			width: 100%;
+			height: 100%;
+			padding: 0px;
+			margin: 0px;
+		}
+		#quiz {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
 </head>
 
 <body>
 	<div id="quiz"></div>
 	<script>
 		const config = {
-			abc: 'asdasd'
+			title: 'What’s Your Brand’s Irresistible "It Factor"?',
+			description: 'Discover your celeb persona — and learn how to uncork your personal "star power" to write copy that connects and converts, so you can infuse more YOU into every message your brand puts out into the world.',
+			image: 'https://s3-us-west-1.amazonaws.com/tryinteract-uploads/5c0f606f5f0f8d0013312fbe/_1282c3d0-2af3-11e9-aa6b-1b5e183061e0.jpg',
+			locales: {
+				start: 'Start Quiz'
+			}
 		};
 
 		document.addEventListener('DOMContentLoaded', function() {

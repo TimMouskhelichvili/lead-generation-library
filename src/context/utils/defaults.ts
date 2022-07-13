@@ -7,7 +7,9 @@ import { IConfiguration } from 'src/interfaces/IConfiguration';
  */
 export const getDefaultState = (config: IConfiguration): IContext => {
     return {
-        ...config,
-        started: false
+        description: config.description,
+        image: config.image,
+        started: false,
+        title: config.title
     };
 };

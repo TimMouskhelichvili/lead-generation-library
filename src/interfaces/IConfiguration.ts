@@ -1,6 +1,9 @@
 import { MyTheme } from 'src/theme';
 
 export interface IConfiguration {
-	questions: string[];
+	title: string;
+	description?: string;
+	image?: string;
+	
 	theme?: MyTheme;
 }

@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import React from 'react';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { App } from 'src/components/app';
@@ -11,7 +11,8 @@ export class LeadGenerationLibrary {
 	 * @param {IConfiguration} config - The config.
 	 */
     public init (element: HTMLElement, config: IConfiguration): void {
-        ReactDOM.render(<App config={config} />, element);
+        const root = createRoot(element);
+        root.render(<App config={config} />);
     }
 
     /**

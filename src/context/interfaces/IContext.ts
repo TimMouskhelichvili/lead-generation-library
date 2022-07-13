@@ -1,3 +1,7 @@
-export interface IContext {
-	started: boolean
+export interface IContext {	
+	title: string;
+	description?: string;
+	image?: string;
+
+	started: boolean;
 }

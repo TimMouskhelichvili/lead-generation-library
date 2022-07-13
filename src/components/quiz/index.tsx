@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { Questions } from 'src/pages/questions';
 import { useStore } from 'src/context';
 import { Main } from 'src/pages/main';
 import { QuizContainer } from './style';
@@ -11,7 +12,7 @@ export const Quiz = (): ReactElement => {
 
     return (
         <QuizContainer>
-            {!started ? <Main /> : <div>quiz</div>}
+            {!started ? <Main /> : <Questions />}
         </QuizContainer>
     );
 };

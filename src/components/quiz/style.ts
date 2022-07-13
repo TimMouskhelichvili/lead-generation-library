@@ -8,3 +8,12 @@ export const QuizContainer = styled.div`
     font-weight: 400;
 	letter-spacing: 0px;
 `;
+
+export const QuizRow = styled.div`
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	max-width: 800px;
+`;

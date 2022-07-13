@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { Questions } from 'src/pages/questions';
 import { useStore } from 'src/context';
 import { Main } from 'src/pages/main';
-import { QuizContainer } from './style';
+import { QuizContainer, QuizRow } from './style';
 
 /**
  * The Quiz component.
@@ -12,7 +12,10 @@ export const Quiz = (): ReactElement => {
 
     return (
         <QuizContainer>
-            {!started ? <Main /> : <Questions />}
+            <QuizRow>
+                {!started ? 
+                    <Main /> : <Questions />}
+            </QuizRow>
         </QuizContainer>
     );
 };

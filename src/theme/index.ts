@@ -11,6 +11,13 @@ export const themes = {
     light: lightTheme
 };
 
+/**
+ * The sizes.
+ */
+export const sizes = {
+    smallTablet: '800px'
+};
+
 export type MyTheme = keyof typeof themes;
 
 export type MyDefaultTheme = typeof lightTheme;

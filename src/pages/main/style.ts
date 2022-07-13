@@ -1,43 +1,47 @@
 import darken from 'polished/lib/color/darken';
 import styled from 'styled-components';
+import { sizes } from 'src/theme';
 
 export const MainContainer = styled.div`
 	text-align: center;
-	position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1em;
-    padding-right: 1em;
-    max-width: 1200px;
 `;
 
 export const MainH1 = styled.h1`
-	padding-top: 20px;
+	padding-top: 30px;
 	font-size: 2em;
 	margin: 0px;
+
+	@media screen and (max-width: ${sizes.smallTablet}) {
+		font-size: 1.6em;
+	}
 `;
 
 export const MainDescription = styled.div`
-	width: 70%;
+	width: 80%;
 	margin: 20px auto;
 	font-size: 1em;
     line-height: 26px;
+
+	@media screen and (max-width: ${sizes.smallTablet}) {
+		width: calc(100% - 1em);
+		padding: 0px .5em;
+	}
 `;
 
 export const MainImageContainer = styled.div`
-	width: 80%;
+	width: 100%;
+	height: 250px;
 	margin: 0px auto;
-	margin-top: 20px;
-    padding-top: 30%;
-	position: relative;
+	margin-top: 30px;
 	border: 1px solid ${(p): string => p.theme.colors.border};
 	border-radius: ${(p): string => p.theme.global.radius};
+
+	@media screen and (max-width: ${sizes.smallTablet}) {
+		margin-top: 20px;
+	}
 `;
 
 export const MainImage = styled.img`
-	position: absolute;
-	left: 0px;
-    top: 0px;
     width: 100%;
     height: 100%;
 	object-fit: cover;
@@ -47,10 +51,10 @@ export const MainImage = styled.img`
 export const MainButton = styled.button`
 	border: 0px;
 	background: ${(p): string => p.theme.colors.primary};
-	padding: 10px 25px;
+	padding: 15px 30px;
 	color: white;
 	border-radius: ${(p): string => p.theme.global.radius};
-	font-size: 1.1em;
+	font-size: 1.3em;
 	cursor: pointer;
 	user-select: none;
 

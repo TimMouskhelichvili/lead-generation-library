@@ -1,3 +1,4 @@
+import darken from 'polished/lib/color/darken';
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
@@ -19,6 +20,8 @@ export const MainH1 = styled.h1`
 export const MainDescription = styled.div`
 	width: 70%;
 	margin: 20px auto;
+	font-size: 1em;
+    line-height: 26px;
 `;
 
 export const MainImageContainer = styled.div`
@@ -49,4 +52,9 @@ export const MainButton = styled.button`
 	border-radius: ${(p): string => p.theme.global.radius};
 	font-size: 1.1em;
 	cursor: pointer;
+	user-select: none;
+
+	&:hover {
+		background: ${(p): string => darken(.05, p.theme.colors.primary)};
+	}
 `;

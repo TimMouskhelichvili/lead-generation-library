@@ -1,27 +1,17 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useDispatch } from 'src/context';
+import React, { ReactElement } from 'react';
+import { useStore } from 'src/context';
 import { Main } from 'src/pages/main';
-import styled from 'styled-components';
+import { QuizContainer } from './style';
 
-const Content = styled.div`
-	width: 100%;
-	height: 100%;
-	font-size: 16px;
-	font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
-    font-weight: 400;
-	letter-spacing: 0px;
-`;
-
+/**
+ * The Quiz component.
+ */
 export const Quiz = (): ReactElement => {
-    const dispatch = useDispatch();
+    const started = useStore(c => c.started);
 
-    useEffect(() => {
-        dispatch({ type: 'INIT' });
-    }, []);
-	
     return (
-        <Content>
-            <Main />
-        </Content>
+        <QuizContainer>
+            {!started ? <Main /> : <div>quiz</div>}
+        </QuizContainer>
     );
 };

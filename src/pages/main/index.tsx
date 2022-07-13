@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { useStore } from 'src/context';
+import { useDispatch, useStore } from 'src/context';
 import { MainDescription, MainH1, MainContainer, MainImageContainer, MainImage, MainButton } from './style';
 
 /**
@@ -11,6 +11,12 @@ export const Main = (): ReactElement => {
     const locale = useStore(c => c.locale);
     const description = useStore(c => c.description);
 
+    const dispatch = useDispatch();
+
+    const handleStartQuiz = (): void => {
+        dispatch({ type: 'START_QUIZ' });
+    };
+	
     return (
         <MainContainer>
             <MainH1>{title}</MainH1>
@@ -21,7 +27,9 @@ export const Main = (): ReactElement => {
             )}
             {description && 
 				<MainDescription>{description}</MainDescription>}
-            <MainButton type='button'>{locale.start}</MainButton>
+            <MainButton type='button' onClick={handleStartQuiz}>
+                {locale.start}
+            </MainButton>
         </MainContainer>
     );
 };

@@ -28,6 +28,7 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
+    "polished": "^4.2.2",
     "styled-components": "^5.3.5",
     "zustand": "^4.0.0-rc.1"
   }

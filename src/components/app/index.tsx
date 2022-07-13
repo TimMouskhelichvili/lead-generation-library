@@ -12,6 +12,10 @@ interface IProps {
 	config: IConfiguration;
 }
 
+/**
+ * The App component.
+ * @param {IProps} props - The props. 
+ */
 export const App = (props: IProps): React.ReactElement => {
     const createStore = (): StoreApi<IContext> => {
         return create(() => getDefaultState(props.config));

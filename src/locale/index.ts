@@ -12,7 +12,7 @@ export type MyLocale = typeof enLocale;
 export type MyLanguage = keyof typeof languages;
 
 /**
- * Returns the default language.
+ * Returns the default locale.
  * @param {MyLanguage} language - The language.
  */
 export const getDefaultLocale = (language?: MyLanguage): MyLocale => {

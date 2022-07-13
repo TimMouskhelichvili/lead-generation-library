@@ -6,7 +6,10 @@ import styled from 'styled-components';
 const Content = styled.div`
 	width: 100%;
 	height: 100%;
-	background: ${(p): string => p.theme.colors.primary}
+	font-size: 16px;
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto,Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+    font-weight: 400;
+	letter-spacing: 0px;
 `;
 
 export const Quiz = (): ReactElement => {

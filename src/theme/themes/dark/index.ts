@@ -1,15 +1,19 @@
-import { MyDefaultTheme } from 'src/theme/types/myDefaultTheme';
+import { MyDefaultTheme } from 'src/theme';
 
 /**
  * The default colors.
  */
 const defaultColors = {
-    primary: 'red'
+    border: '#ededed',
+    primary: '#BD4B4B'
 };
 
 /**
  * The dark theme.
  */
 export const darkTheme: MyDefaultTheme = {
-    colors: defaultColors
+    colors: defaultColors,
+    global: {
+        radius: '7px'
+    }
 };

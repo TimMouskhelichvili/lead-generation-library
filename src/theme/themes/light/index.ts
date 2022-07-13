@@ -2,6 +2,7 @@
  * The default colors.
  */
 const defaultColors = {
+    border: '#ededed',
     primary: '#BD4B4B'
 };
 
@@ -9,5 +10,8 @@ const defaultColors = {
  * The light theme.
  */
 export const lightTheme = {
-    colors: defaultColors
+    colors: defaultColors,
+    global: {
+        radius: '7px'
+    }
 };

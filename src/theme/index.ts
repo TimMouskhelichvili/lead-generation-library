@@ -13,6 +13,8 @@ export const themes = {
 
 export type MyTheme = keyof typeof themes;
 
+export type MyDefaultTheme = typeof lightTheme;
+
 /**
  * Returns the default theme.
  * @param {MyTheme} theme - The theme.

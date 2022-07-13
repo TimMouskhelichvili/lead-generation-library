@@ -1,3 +1,4 @@
+import { MyLanguage, MyLocale } from 'src/locales';
 import { MyTheme } from 'src/theme';
 
 export interface IConfiguration {
@@ -6,4 +7,6 @@ export interface IConfiguration {
 	image?: string;
 	
 	theme?: MyTheme;
+	language?: MyLanguage;
+	customLocale: MyLocale;
 }

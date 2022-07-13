@@ -1,4 +1,4 @@
-import { MyDefaultTheme } from 'src/theme/types/myDefaultTheme';
+import { MyDefaultTheme } from 'src/theme';
 
 /**
  * Adds the theme to the styled components.

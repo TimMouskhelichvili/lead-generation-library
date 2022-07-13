@@ -1,9 +1,9 @@
 import React from 'react';
 import create, { StoreApi } from 'zustand';
 import { ThemeProvider } from 'styled-components';
-import { getDefaultState } from 'src/context/utils/defaults';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IContext } from 'src/context/interfaces/IContext';
+import { getDefaultState } from 'src/utils/defaults';
 import { getDefaultTheme } from 'src/theme';
 import { Quiz } from 'src/components/quiz';
 import { Provider } from 'src/context';

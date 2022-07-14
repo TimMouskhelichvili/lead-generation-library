@@ -26,11 +26,12 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
-	"react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "jsonschema": "^1.4.1",
     "polished": "^4.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-components": "^5.3.5",
+    "url": "^0.11.0",
     "zustand": "^4.0.0-rc.1"
   }
 }

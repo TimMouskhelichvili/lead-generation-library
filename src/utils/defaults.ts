@@ -1,6 +1,7 @@
 import { Validator } from 'jsonschema';
 import { configurationSchema } from 'src/schemas/configuration';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
+import { ValidationResultError } from 'src/errors/validationResultError';
 import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultLocale, MyLocale } from 'src/locale';
 import { questionSchema } from 'src/schemas/question';
@@ -18,10 +19,15 @@ export const validateConfig = (config: IConfiguration): void => {
     validator.addSchema(questionSchema);
     validator.addSchema(localeSchema);
 	
-    validator.validate(config, configurationSchema, {
-        allowUnknownAttributes: false,
-        throwAll: true
-    });
+    try {
+        validator.validate(config, configurationSchema, {
+            allowUnknownAttributes: false,
+            throwAll: true
+        });
+    } catch (e) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        throw new (ValidationResultError as any)(e);
+    }
 };
 
 /**

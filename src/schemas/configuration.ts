@@ -6,6 +6,9 @@ export const configurationSchema: Schema = {
     additionalProperties: false,
     id: '/configuration',
     properties: {
+        customLocale: {
+            $ref: '/locale'
+        },
         description: {
             type: 'string'
         },

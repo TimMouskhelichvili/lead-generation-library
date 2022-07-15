@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { Default } from 'src/pages/questions/components/default';
 import { useStore } from 'src/context';
 
 /**
@@ -7,7 +8,7 @@ import { useStore } from 'src/context';
 export const Questions = (): ReactElement => {
     const questions = useStore(c => c.questions);
     const current = useStore(c => c.current);
+    const question = questions[current];
 
-    console.log(questions[current]);
-    return <div>questions</div>;
+    return <Default question={question} />;
 };

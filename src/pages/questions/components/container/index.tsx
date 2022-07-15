@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import { ContainerTitle, ContainerContent } from './style';
+import { ContainerTitle, ContainerContent, ContainerButtons } from './style';
 
 interface IProps {
 	title: string;
-	current: string;
+	selected: string[];
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	children: any;
 }
@@ -19,6 +19,10 @@ export const Container = (props: IProps): ReactElement => {
             <ContainerContent>
                 {props.children}
             </ContainerContent>
+            <ContainerButtons>
+                <button>previous</button>
+                <button>next</button>
+            </ContainerButtons>
         </div>
     );
 };

@@ -12,22 +12,24 @@ interface IProps {
  * @param {IProps} props - The props.
  */
 export const Default = (props: IProps): ReactElement => {
-    const [ current, setCurrent ] = useState('');
+    const [ selected, setSelected ] = useState<string[]>([]);
 
     const handleChange = (answer: string) => (): void => {
-        if (answer === current) {
-            setCurrent('');
+        const newSelected = [ ...selected ];
+
+        if (selected.includes(answer)) {
+            setSelected(newSelected.filter((item) => item !== answer));
         } else {
-            setCurrent(answer);
+            setSelected([ answer ]);
         }
     };
 
     return (
-        <Container title={props.question.title} current={current}>
+        <Container title={props.question.title} selected={selected}>
             {props.question.answers.map((answer) => (
                 <DefaultAnswer 
                     key={answer.answer} 
-                    current={current === answer.answer} 
+                    current={selected.includes(answer.answer)} 
                     onClick={handleChange(answer.answer)}>
                     {answer.answer}
                 </DefaultAnswer>

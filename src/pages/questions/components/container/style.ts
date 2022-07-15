@@ -7,5 +7,5 @@ export const ContainerTitle = styled.h1`
 `;
 
 export const ContainerContent = styled.div`
-	margin: 10px 0px;
+	margin: 20px 0px;
 `;

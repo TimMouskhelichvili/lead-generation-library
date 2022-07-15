@@ -19,11 +19,17 @@ export const configurationSchema: Schema = {
             enum: Object.keys(languages),
             type: 'string'
         },
+        pick: {
+            type: 'number'
+        },
         questions: {
             items: { 
                 $ref: '/question'
             },
             type: 'array'
+        },
+        randomize: {
+            type: 'boolean'
         },
         theme: {
             enum: Object.keys(themes),

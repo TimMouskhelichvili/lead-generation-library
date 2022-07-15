@@ -7,7 +7,8 @@ export interface IConfiguration {
 	questions: IQuestion[];
 	description?: string;
 	image?: string;
-	
+	randomize?: boolean;
+	pick?: number;
 	theme?: MyTheme;
 	language?: MyLanguage;
 	customLocale: MyLocale;

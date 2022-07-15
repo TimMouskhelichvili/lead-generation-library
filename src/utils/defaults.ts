@@ -5,6 +5,7 @@ import { ValidationResultError } from 'src/errors/validationResultError';
 import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultLocale, MyLocale } from 'src/locale';
 import { questionSchema } from 'src/schemas/question';
+import { IQuestion } from 'src/interfaces/IQuestion';
 import { answerSchema } from 'src/schemas/answer';
 import { localeSchema } from 'src/schemas/locale';
 
@@ -39,9 +40,31 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         description: config.description,
         image: config.image,
         locale: getLocale(config),
+        questions: getQuestions(config),
         started: false,
         title: config.title
     };
+};
+
+/**
+ * Returns the questions.
+ * @param {IConfiguration} config - The configuration.
+ */
+const getQuestions = (config: IConfiguration): IQuestion[] => {
+    let questions = [ ...config.questions ];
+	
+    if (config.randomize) {
+        questions = questions
+            .map(value => ({ sort: Math.random(), value }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value);
+    }
+
+    if (config.pick) {
+        questions = questions.slice(0, config.pick);
+    }
+
+    return questions;
 };
 
 /**

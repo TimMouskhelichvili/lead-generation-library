@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { DefaultAnswer } from './style';
@@ -23,6 +23,10 @@ export const Default = (props: IProps): ReactElement => {
             setSelected([ answer ]);
         }
     };
+
+    useEffect(() => {
+        setSelected([]);
+    }, [ props ]);
 
     return (
         <Container title={props.question.title} selected={selected}>

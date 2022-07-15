@@ -1,7 +1,7 @@
 import { Validator } from 'jsonschema';
+import { ValidationResultError } from 'src/errors/validationResultError';
 import { configurationSchema } from 'src/schemas/configuration';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
-import { ValidationResultError } from 'src/errors/validationResultError';
 import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultLocale, MyLocale } from 'src/locale';
 import { questionSchema } from 'src/schemas/question';
@@ -37,6 +37,7 @@ export const validateConfig = (config: IConfiguration): void => {
  */
 export const getDefaultState = (config: IConfiguration): IContext => {
     return {
+        current: 0,
         description: config.description,
         image: config.image,
         locale: getLocale(config),

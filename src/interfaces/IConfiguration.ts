@@ -11,5 +11,5 @@ export interface IConfiguration {
 	pick?: number;
 	theme?: MyTheme;
 	language?: MyLanguage;
-	customLocale: MyLocale;
+	customLocale?: MyLocale;
 }

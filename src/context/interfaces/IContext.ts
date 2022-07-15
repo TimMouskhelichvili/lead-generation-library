@@ -9,4 +9,5 @@ export interface IContext {
 	image?: string;
 	started: boolean;
 	locale: MyLocale;
+	current: number;
 }

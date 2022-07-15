@@ -7,7 +7,7 @@ export type CoreAction = 'START_QUIZ';
  */
 export const coreReducer: Reducer<CoreAction> = {
     'START_QUIZ': (api) => {
-        api.setState({ 
+        api.setState({
             started: true 
         });
     }

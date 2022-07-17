@@ -1,5 +1,5 @@
 export const enLocale = {
-    next: 'Next',
+    next: 'Ok',
     previous: 'Previous',
     start: 'Start Quiz'
 };

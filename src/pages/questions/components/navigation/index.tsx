@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useStore } from 'src/context';
 import { Icon } from 'src/components/icon';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { NavigationContainer, NavigationButton } from './style';
 
 /**

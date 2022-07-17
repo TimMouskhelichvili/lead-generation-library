@@ -1,8 +1,16 @@
 import React, { ReactElement } from 'react';
 import { useDispatch, useStore } from 'src/context';
 import { Icon } from 'src/components/icon';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { ContainerTitle, ContainerContent, ContainerButtons, ContainerButton } from './style';
+import { faCheck, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { 
+    ContainerTitle, 
+    ContainerContent, 
+    ContainerButtons, 
+    SubmitButton, 
+    NavigationContainer,
+    SubmitContainer,
+    NavigationButton
+} from './style';
 
 interface IProps {
 	title: string;
@@ -19,18 +27,12 @@ export const Container = (props: IProps): ReactElement => {
     const current = useStore(c => c.current);	
     const dispatch = useDispatch();
 
-    const handlePrevious = (): void => {
-        dispatch({ type: 'PREVIOUS' });
-    };
+    const handleNext = (): void => dispatch({ type: 'NEXT' });
+    const handlePrevious = (): void => dispatch({ type: 'PREVIOUS' });
 	
-    const handleNext = (): void => {
-        dispatch({ 
-            type: 'NEXT', 
-            value: props.selected 
-        });
+    const handleSubmit = (): void => {
+        dispatch({ type: 'SUBMIT', value: props.selected });
     };
-
-    const hasPrevious = false;
 
     return (
         <div>
@@ -39,14 +41,19 @@ export const Container = (props: IProps): ReactElement => {
                 {props.children}
             </ContainerContent>
             <ContainerButtons>
-                {hasPrevious && (
-                    <ContainerButton onClick={handlePrevious}>
-                        {locale.previous}
-                    </ContainerButton>
-                )}
-                <ContainerButton disabled={!props.selected.length} onClick={handleNext}>
-                    {locale.next} <Icon icon={faCheck} />
-                </ContainerButton>
+                <SubmitContainer>
+                    <SubmitButton disabled={!props.selected.length} onClick={handleSubmit}>
+                        {locale.submit} <Icon icon={faCheck} />
+                    </SubmitButton>
+                </SubmitContainer>
+                <NavigationContainer>
+                    <NavigationButton onClick={handlePrevious} disabled={!current}>
+                        <Icon icon={faChevronLeft} />
+                    </NavigationButton>
+                    <NavigationButton onClick={handleNext}>
+                        <Icon icon={faChevronRight} />
+                    </NavigationButton>
+                </NavigationContainer>
             </ContainerButtons>
         </div>
     );

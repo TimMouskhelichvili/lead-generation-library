@@ -5,7 +5,6 @@ export const DefaultAnswer = styled.button<{ current: boolean; }>`
 	background: ${(p): string => p.theme.pages.questions.item.background};
 	padding: 12px;
 	margin-bottom: 10px;
-	font-style: italic;
 	border: none;
 	cursor: pointer;
 	display: block;

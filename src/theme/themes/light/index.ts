@@ -7,7 +7,8 @@ const defaultColors = {
     background: '#fafafa',
     border: '#ededed',
     color: '#181e1f',
-    primary: '#BD4B4B'
+    primary: '#BD4B4B',
+    primaryDarken: darken(.05, '#BD4B4B')
 };
 
 /**
@@ -26,6 +27,12 @@ export const lightTheme = {
             },
             item: {
                 background: lighten(.01, defaultColors.border),
+                border: darken(.04, defaultColors.border), 
+                hoveredBackground: darken(.05, defaultColors.border),
+                hoveredBorder: darken(.1, defaultColors.border)
+            },
+            navigation: {
+                background: defaultColors.border,
                 hoveredBackground: darken(.05, defaultColors.border)
             }
         }

@@ -1,4 +1,3 @@
-import darken from 'polished/lib/color/darken';
 import styled from 'styled-components';
 import { sizes } from 'src/theme';
 
@@ -59,6 +58,6 @@ export const MainButton = styled.button`
 	user-select: none;
 
 	&:hover {
-		background: ${(p): string => darken(.05, p.theme.colors.primary)};
+		background: ${(p): string => p.theme.colors.primaryDarken};
 	}
 `;

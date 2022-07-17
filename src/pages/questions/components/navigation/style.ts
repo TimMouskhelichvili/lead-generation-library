@@ -2,15 +2,14 @@ import styled from 'styled-components';
 
 export const NavigationContainer = styled.div`
 	button {
-		margin-left: 1px;
+		margin-left: 2px;
 	}
 `;
 
 export const NavigationButton = styled.button`
 	border-radius: ${(p): string => p.theme.global.radius};
-	background: ${(p): string => p.theme.pages.questions.button.background};
-	color: white;
-	border: none;
+	background:  ${(p): string => p.theme.pages.questions.navigation.background};
+	border:none;
 	padding: 15px 20px;
     font-size: 1.1em;
 
@@ -21,10 +20,10 @@ export const NavigationButton = styled.button`
 		cursor: pointer;
 
 		&:hover {
-			background: ${p.theme.pages.questions.button.hoveredBackground};
+			background: ${p.theme.pages.questions.navigation.hoveredBackground};
 		}
 	`}
-	
+
 	&:first-of-type {
 		border-top-right-radius: 0px;
 		border-bottom-right-radius: 0px;

@@ -1,9 +1,9 @@
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import React, { ReactElement } from 'react';
-import { IIcon } from 'src/interfaces/IIcon';
 import { IconSVG } from './style';
 
 interface IProps {
-	icon: IIcon;
+	icon: IconDefinition;
 }
 
 /**
@@ -11,7 +11,11 @@ interface IProps {
  * @param {IProps} props - The props.
  */
 export const Icon = (props: IProps): ReactElement => (
-    <IconSVG>
-        <path fill={'currentColor'} d={props.icon.data} />
+    <IconSVG 
+        focusable={'false'} 
+        role={'img'} 
+        xmlns={'http://www.w3.org/2000/svg'} 
+        viewBox={`0 0 ${props.icon.icon[0]} ${props.icon.icon[1]}`}>
+        <path fill={'currentColor'} d={props.icon.icon[4] as string} />
     </IconSVG>
 );

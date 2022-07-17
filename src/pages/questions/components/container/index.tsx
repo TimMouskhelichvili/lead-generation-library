@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useDispatch, useStore } from 'src/context';
 import { Icon } from 'src/components/icon';
-import { icons } from 'src/data/icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ContainerTitle, ContainerContent, ContainerButtons, ContainerButton } from './style';
 
 interface IProps {
@@ -31,7 +31,7 @@ export const Container = (props: IProps): ReactElement => {
     };
 
     const hasPrevious = false;
-	
+
     return (
         <div>
             <ContainerTitle>{props.title}</ContainerTitle>
@@ -45,7 +45,7 @@ export const Container = (props: IProps): ReactElement => {
                     </ContainerButton>
                 )}
                 <ContainerButton disabled={!props.selected.length} onClick={handleNext}>
-                    {locale.next} <Icon icon={icons.check} />
+                    {locale.next} <Icon icon={faCheck} />
                 </ContainerButton>
             </ContainerButtons>
         </div>

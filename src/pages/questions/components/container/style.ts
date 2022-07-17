@@ -24,6 +24,10 @@ export const ContainerButton = styled.button`
 	padding: 15px 20px;
     font-size: 1.1em;
 
+	svg {
+		margin-left: 3px;
+	}
+
 	${(p): string => p.disabled ? `
 		opacity: .6;
 	` : `

@@ -5,8 +5,7 @@ import { ContainerTitle, ContainerContent, ContainerButtons, ContainerButton } f
 interface IProps {
 	title: string;
 	selected: string[];
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	children: any;
+	children: React.ReactNode;
 }
 
 /**
@@ -23,7 +22,7 @@ export const Container = (props: IProps): ReactElement => {
     };
 	
     const handleNext = (): void => {
-        dispatch({ type: 'NEXT' });
+        dispatch({ type: 'NEXT', value: props.selected });
     };
 
     const hasPrevious = Boolean(current);

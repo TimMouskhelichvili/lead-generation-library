@@ -42,6 +42,7 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         image: config.image,
         locale: getLocale(config),
         questions: getQuestions(config),
+        results: {},
         started: false,
         title: config.title
     };

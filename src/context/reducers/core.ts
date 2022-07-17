@@ -6,8 +6,15 @@ export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS';
  * The core reducer.
  */
 export const coreReducer: Reducer<CoreAction> = {
-    'NEXT': (api) => {
+    'NEXT': (api, value) => {
         const state = api.getState();
+
+        api.setState({
+            results: {
+                [state.current]: value, 
+                ...state.results 
+            }
+        });
 
         if (state.current + 2 > state.questions.length) {
             return;

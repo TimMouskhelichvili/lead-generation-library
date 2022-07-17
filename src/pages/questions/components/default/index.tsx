@@ -5,6 +5,7 @@ import { DefaultAnswer } from './style';
 
 interface IProps {
 	question: IQuestion;
+	result: string[];
 }
 
 /**
@@ -26,7 +27,15 @@ export const Default = (props: IProps): ReactElement => {
 
     useEffect(() => {
         setSelected([]);
-    }, [ props ]);
+    }, [ props.question ]);
+
+    useEffect(() => {
+        if (!props.result) {
+            return;
+        }
+
+        setSelected(props.result);
+    }, [ props.result ]);
 
     return (
         <Container title={props.question.title} selected={selected}>

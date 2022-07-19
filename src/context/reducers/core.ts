@@ -1,6 +1,6 @@
 import { Reducer } from 'src/context/types/reducer';
 
-export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT';
+export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE_QUIZ';
 
 /**
  * The core reducer.
@@ -44,6 +44,14 @@ export const coreReducer: Reducer<CoreAction> = {
 		
         api.setState({
             current: state.current + 1
+        });
+    },
+    'UPDATE_QUIZ': (api) => {
+        const state = api.getState();
+
+        api.setState({
+            question: state.questions[state.current],
+            result: state.results[state.current]
         });
     }
 };

@@ -1,21 +1,43 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { useStore } from 'src/context';
 import { DefaultAnswer } from './style';
-
-interface IProps {
-	question: IQuestion;
-	result: string[];
-}
 
 /**
  * The Default component.
- * @param {IProps} props - The props.
  */
-export const Default = (props: IProps): ReactElement => {
+export const Default = (): ReactElement => {
+    const question = useStore(c => c.question);
+    const result = useStore(c => c.result);
+	
+    const [ selected, handleChange ] = useSelected(question, result);
+
+    return (
+        <Container title={question.title} selected={selected}>
+            {question.answers.map((answer) => (
+                <DefaultAnswer 
+                    key={answer.answer} 
+                    current={selected.includes(answer.answer)} 
+                    onClick={handleChange(answer.answer)}>
+                    {answer.answer}
+                </DefaultAnswer>
+            ))}
+        </Container>
+    );
+};
+
+type HandleChange = (answer: string) => () => void;
+
+/**
+ * The selected hook.
+ * @param {IQuestion} question - The question. 
+ * @param {string[]} result - The result. 
+ */
+const useSelected = (question: IQuestion, result?: string[]): [ string[], HandleChange ] => {
     const [ selected, setSelected ] = useState<string[]>([]);
 
-    const handleChange = (answer: string) => (): void => {
+    const change = (answer: string) => (): void => {
         const newSelected = [ ...selected ];
 
         if (selected.includes(answer)) {
@@ -27,26 +49,18 @@ export const Default = (props: IProps): ReactElement => {
 
     useEffect(() => {
         setSelected([]);
-    }, [ props.question ]);
+    }, [ question ]);
 
     useEffect(() => {
-        if (!props.result) {
+        if (!result) {
             return;
         }
 
-        setSelected(props.result);
-    }, [ props.result ]);
+        setSelected(result);
+    }, [ result ]);
 
-    return (
-        <Container title={props.question.title} selected={selected}>
-            {props.question.answers.map((answer) => (
-                <DefaultAnswer 
-                    key={answer.answer} 
-                    current={selected.includes(answer.answer)} 
-                    onClick={handleChange(answer.answer)}>
-                    {answer.answer}
-                </DefaultAnswer>
-            ))}
-        </Container>
-    );
+    return [
+        selected,
+        change
+    ];
 };

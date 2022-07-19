@@ -33,8 +33,10 @@ export const darkTheme: MyDefaultTheme = {
                 hoveredBorder: darken(.1, defaultColors.border)
             },
             navigation: {
-                background: defaultColors.border,
-                hoveredBackground: darken(.05, defaultColors.border)
+                background: lighten(.01, defaultColors.border),
+                border: darken(.04, defaultColors.border), 
+                hoveredBackground: darken(.05, defaultColors.border),
+                hoveredBorder: darken(.1, defaultColors.border)
             }
         }
     }

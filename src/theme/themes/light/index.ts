@@ -33,7 +33,9 @@ export const lightTheme = {
             },
             navigation: {
                 background: defaultColors.border,
-                hoveredBackground: darken(.05, defaultColors.border)
+                border: darken(.04, defaultColors.border), 
+                hoveredBackground: darken(.05, defaultColors.border),
+                hoveredBorder: darken(.1, defaultColors.border)
             }
         }
     }

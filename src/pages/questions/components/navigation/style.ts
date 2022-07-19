@@ -9,7 +9,7 @@ export const NavigationContainer = styled.div`
 export const NavigationButton = styled.button`
 	border-radius: ${(p): string => p.theme.global.radius};
 	background:  ${(p): string => p.theme.pages.questions.navigation.background};
-	border:none;
+	border: 1px solid ${(p): string => p.theme.pages.questions.navigation.border};
 	padding: 15px 20px;
     font-size: 1.1em;
 
@@ -21,6 +21,7 @@ export const NavigationButton = styled.button`
 
 		&:hover {
 			background: ${p.theme.pages.questions.navigation.hoveredBackground};
+			border: 1px solid ${p.theme.pages.questions.navigation.hoveredBorder};
 		}
 	`}
 

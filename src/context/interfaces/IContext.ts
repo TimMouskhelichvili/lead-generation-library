@@ -6,6 +6,8 @@ export interface IContext {
 	questions: IQuestion[];
 	description?: string;
 	image?: string;
+	result?: string[];
+	question: IQuestion;
 	started: boolean;
 	locale: MyLocale;
 	current: number;

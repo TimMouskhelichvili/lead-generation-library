@@ -36,12 +36,15 @@ export const validateConfig = (config: IConfiguration): void => {
  * @param {IConfiguration} config - The configuration.
  */
 export const getDefaultState = (config: IConfiguration): IContext => {
+    const questions = getQuestions(config);
+
     return {
         current: 0,
         description: config.description,
         image: config.image,
         locale: getLocale(config),
-        questions: getQuestions(config),
+        question: questions[0],
+        questions,
         results: {},
         started: false,
         title: config.title

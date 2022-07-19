@@ -8,7 +8,9 @@ import { NavigationContainer, NavigationButton } from './style';
  * The Navigation component.
  */
 export const Navigation = (): ReactElement => {
-    const current = useStore(c => c.current);	
+    const isPreviousDisabled = useStore(c => c.isPreviousDisabled);
+    const isNextDisabled = useStore(c => c.isNextDisabled);	
+
     const dispatch = useDispatch();
 
     const handleNext = (): void => dispatch({ type: 'NEXT' });
@@ -16,10 +18,10 @@ export const Navigation = (): ReactElement => {
 
     return (
         <NavigationContainer>
-            <NavigationButton onClick={handlePrevious} disabled={!current}>
+            <NavigationButton onClick={handlePrevious} disabled={isPreviousDisabled}>
                 <Icon icon={faChevronLeft} />
             </NavigationButton>
-            <NavigationButton onClick={handleNext}>
+            <NavigationButton onClick={handleNext} disabled={isNextDisabled}>
                 <Icon icon={faChevronRight} />
             </NavigationButton>
         </NavigationContainer>

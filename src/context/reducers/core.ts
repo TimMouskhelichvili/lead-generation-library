@@ -50,6 +50,8 @@ export const coreReducer: Reducer<CoreAction> = {
         const state = api.getState();
 
         api.setState({
+            isNextDisabled: true,
+            isPreviousDisabled: !state.current,
             question: state.questions[state.current],
             result: state.results[state.current]
         });

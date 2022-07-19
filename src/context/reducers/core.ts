@@ -1,4 +1,6 @@
 import { Reducer } from 'src/context/types/reducer';
+import { StoreApi } from 'zustand';
+import { IContext } from '../interfaces/IContext';
 
 export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE_QUIZ';
 
@@ -7,20 +9,13 @@ export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE
  */
 export const coreReducer: Reducer<CoreAction> = {
     'NEXT': (api) => {
-        const current = api.getState().current;
-
         api.setState({
-            current: current + 1
+            current: getNext(api)
         });
     },
     'PREVIOUS': (api) => {
-        const current = api.getState().current;
-        if (current - 1 < 0) {
-            return;
-        }
-
         api.setState({
-            current: current - 1
+            current: api.getState().current - 1
         });
     },
     'START_QUIZ': (api) => {
@@ -48,12 +43,27 @@ export const coreReducer: Reducer<CoreAction> = {
     },
     'UPDATE_QUIZ': (api) => {
         const state = api.getState();
+        const next = getNext(api);
 
         api.setState({
-            isNextDisabled: true,
+            isNextDisabled: !state.results[next] || state.current === state.questions.length - 1,
             isPreviousDisabled: !state.current,
             question: state.questions[state.current],
             result: state.results[state.current]
         });
     }
+};
+
+/**
+ * Returns the next.
+ * @param {StoreApi<IContext>} api - The api.
+ */
+const getNext = (api: StoreApi<IContext>): number => {
+    const current = api.getState().current;
+
+    if (current < api.getState().questions.length - 1) {
+        return current + 1;
+    }
+
+    return current;
 };

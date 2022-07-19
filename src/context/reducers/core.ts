@@ -1,6 +1,6 @@
-import { Reducer } from 'src/context/types/reducer';
 import { StoreApi } from 'zustand';
-import { IContext } from '../interfaces/IContext';
+import { IContext } from 'src/context/interfaces/IContext';
+import { Reducer } from 'src/context/types/reducer';
 
 export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE_QUIZ';
 

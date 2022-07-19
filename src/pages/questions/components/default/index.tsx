@@ -10,11 +10,12 @@ import { DefaultAnswer } from './style';
 export const Default = (): ReactElement => {
     const question = useStore(c => c.question);
     const result = useStore(c => c.result);
+    const locale = useStore(c => c.locale);
 	
     const [ selected, handleChange ] = useSelected(question, result);
 
     return (
-        <Container title={question.title} selected={selected}>
+        <Container title={question.title} selected={selected} explanation={locale.selectOneAnswer}>
             {question.answers.map((answer) => (
                 <DefaultAnswer 
                     key={answer.answer} 

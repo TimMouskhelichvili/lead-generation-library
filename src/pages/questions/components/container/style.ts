@@ -10,6 +10,11 @@ export const ContainerContent = styled.div`
 	margin: 20px 0px;
 `;
 
+export const ContainerExplanation = styled.div`
+	padding-top: 10px;
+	font-style: italic;
+`;
+
 export const ContainerButtons = styled.div`
 	user-select: none;
 	display: flex;

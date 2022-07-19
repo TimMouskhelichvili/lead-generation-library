@@ -2,12 +2,13 @@ import React, { ReactElement } from 'react';
 import { useDispatch, useStore } from 'src/context';
 import { Icon } from 'src/components/icon';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { ContainerTitle, ContainerContent, ContainerButtons, SubmitButton, SubmitContainer } from './style';
+import { ContainerTitle, ContainerContent, ContainerButtons, SubmitButton, SubmitContainer, ContainerExplanation } from './style';
 import { Navigation } from 'src/pages/questions/components/navigation';
 
 interface IProps {
 	title: string;
 	selected: string[];
+	explanation?: string;
 	children: React.ReactNode;
 }
 
@@ -26,6 +27,8 @@ export const Container = (props: IProps): ReactElement => {
     return (
         <div>
             <ContainerTitle>{props.title}</ContainerTitle>
+            {props.explanation && 
+				<ContainerExplanation>{props.explanation}</ContainerExplanation>}
             <ContainerContent>
                 {props.children}
             </ContainerContent>

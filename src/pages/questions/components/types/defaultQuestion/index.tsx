@@ -5,9 +5,9 @@ import { useStore } from 'src/context';
 import { DefaultAnswer } from './style';
 
 /**
- * The Default component.
+ * The DefaultQuestion component.
  */
-export const Default = (): ReactElement => {
+export const DefaultQuestion = (): ReactElement => {
     const question = useStore(c => c.question);
     const result = useStore(c => c.result);
     const explanation = useExplanation(question);
@@ -18,7 +18,7 @@ export const Default = (): ReactElement => {
 
     return (
         <Container title={question.title} selected={selected} explanation={explanation} disabled={disabled}>
-            {question.answers.map((answer) => (
+            {question.answers?.map((answer) => (
                 <DefaultAnswer 
                     key={answer.answer} 
                     current={selected.includes(answer.answer)} 

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
 import { useStore } from 'src/context';
 import { Input } from './style';
@@ -9,6 +9,7 @@ import { Input } from './style';
 export const TextQuestion = (): ReactElement => {
     const [ value, setValue ] = useState(''); 
     const question = useStore(c => c.question);
+    const result = useStore(c => c.result);
     const selected = value ? [ value ] : [];
     const disabled = !value;
 
@@ -16,11 +17,23 @@ export const TextQuestion = (): ReactElement => {
         setValue(e.target.value);
     };
 
+    useEffect(() => {
+        setValue('');
+    }, [ question ]);
+
+    useEffect(() => {
+        if (!result) {
+            return;
+        }
+
+        setValue(result[0]);
+    }, [ result ]);
+
     return (
         <Container title={question.title} selected={selected} disabled={disabled}>
             <Input 
                 placeholder={question.placeholder} 
-                value={value} 
+                value={value}
                 onChange={handleChange} />
         </Container>
     );

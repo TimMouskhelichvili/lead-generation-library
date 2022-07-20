@@ -1,13 +1,14 @@
 import React, { ReactElement } from 'react';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Navigation } from 'src/pages/questions/components/navigation';
 import { useDispatch, useStore } from 'src/context';
 import { Icon } from 'src/components/icon';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { ContainerTitle, ContainerContent, ContainerButtons, SubmitButton, SubmitContainer, ContainerExplanation } from './style';
-import { Navigation } from 'src/pages/questions/components/navigation';
 
 interface IProps {
 	title: string;
 	selected: string[];
+	disabled: boolean;
 	explanation?: string;
 	children: React.ReactNode;
 }
@@ -34,7 +35,7 @@ export const Container = (props: IProps): ReactElement => {
             </ContainerContent>
             <ContainerButtons>
                 <SubmitContainer>
-                    <SubmitButton disabled={!props.selected.length} onClick={handleSubmit}>
+                    <SubmitButton disabled={props.disabled} onClick={handleSubmit}>
                         {locale.submit} <Icon icon={faCheck} />
                     </SubmitButton>
                 </SubmitContainer>

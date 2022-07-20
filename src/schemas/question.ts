@@ -10,7 +10,14 @@ export const questionSchema: Schema = {
             },
             type: 'array'
         },
+        max: {
+            type: 'number'
+        },
         title: {
+            type: 'string'
+        },
+        type: {
+            enum: [ 'text' ],
             type: 'string'
         }
     },

@@ -10,12 +10,14 @@ import { DefaultAnswer } from './style';
 export const Default = (): ReactElement => {
     const question = useStore(c => c.question);
     const result = useStore(c => c.result);
-    const locale = useStore(c => c.locale);
-	
+    const explanation = useExplanation(question);
+
     const [ selected, handleChange ] = useSelected(question, result);
+    const maxLength = isMulti(question) ? Number(question.max) : 1;
+    const disabled = selected.length !== maxLength;
 
     return (
-        <Container title={question.title} selected={selected} explanation={locale.selectOneAnswer}>
+        <Container title={question.title} selected={selected} explanation={explanation} disabled={disabled}>
             {question.answers.map((answer) => (
                 <DefaultAnswer 
                     key={answer.answer} 
@@ -43,8 +45,10 @@ const useSelected = (question: IQuestion, result?: string[]): [ string[], Handle
 
         if (selected.includes(answer)) {
             setSelected(newSelected.filter((item) => item !== answer));
-        } else {
+        } else if (!isMulti(question)) {
             setSelected([ answer ]);
+        } else if (newSelected.length < Number(question.max)) {
+            setSelected([ answer, ...newSelected ]);	
         }
     };
 
@@ -65,3 +69,23 @@ const useSelected = (question: IQuestion, result?: string[]): [ string[], Handle
         change
     ];
 };
+
+/**
+ * The explanation hook.
+ * @param {IQuestion} question - The question. 
+ */
+const useExplanation = (question: IQuestion): string => {
+    const { selectMultipleAnswers, selectOneAnswer } = useStore(c => c.locale);
+
+    if (isMulti(question)) {
+        return selectMultipleAnswers.replace('{0}', String(question.max));
+    }
+    
+    return selectOneAnswer;
+};
+
+/**
+ * Returns if quesion accepts multiple answers.
+ * @param {IQuestion} question - The question. 
+ */
+const isMulti = (question: IQuestion): boolean => Number(question.max) > 1;

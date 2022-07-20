@@ -7,4 +7,5 @@ export interface IQuestion {
 	type?: QuestionType;
 	max?: number;
 	answers?: IAnswer[];
+	placeholder?: string;
 }

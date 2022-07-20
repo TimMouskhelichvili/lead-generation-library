@@ -25,6 +25,9 @@ export const questionSchema: Schema = {
         {
             additionalProperties: false,
             properties: {
+                placeholder: {
+                    type: 'string'
+                },
                 title: {
                     type: 'string'
                 },

@@ -1,8 +1,8 @@
 import { Validator } from 'jsonschema';
 import { ValidationResultError } from 'src/errors/validationResultError';
+import { IContext, Status } from 'src/context/interfaces/IContext';
 import { configurationSchema } from 'src/schemas/configuration';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
-import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultLocale, MyLocale } from 'src/locale';
 import { questionSchema } from 'src/schemas/question';
 import { IQuestion } from 'src/interfaces/IQuestion';
@@ -46,7 +46,7 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         question: questions[0],
         questions,
         results: {},
-        started: false,
+        status: Status.NotStarted,
         title: config.title
     };
 };

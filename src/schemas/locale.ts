@@ -4,6 +4,9 @@ export const localeSchema: Schema = {
     additionalProperties: false,
     id: '/locale',
     properties: {
+        ok: {
+            type: 'string'
+        },
         selectMultipleAnswers: {
             type: 'string'
         },

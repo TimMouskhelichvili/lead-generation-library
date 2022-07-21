@@ -1,6 +1,12 @@
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { MyLocale } from 'src/locale';
 
+export enum Status {
+	NotStarted,
+	Active, 
+	Completed
+}
+
 export interface IContext {	
 	title: string;
 	questions: IQuestion[];
@@ -8,8 +14,8 @@ export interface IContext {
 	image?: string;
 	result?: string[];
 
+	status: Status,
 	question: IQuestion;
-	started: boolean;
 	locale: MyLocale;
 	current: number;
 	results: { 
@@ -18,4 +24,5 @@ export interface IContext {
 
 	isPreviousDisabled?: boolean;
 	isNextDisabled?: boolean;
+	isLastQuestion?: boolean;
 }

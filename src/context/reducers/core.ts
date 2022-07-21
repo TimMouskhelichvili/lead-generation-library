@@ -1,5 +1,5 @@
 import { StoreApi } from 'zustand';
-import { IContext } from 'src/context/interfaces/IContext';
+import { IContext, Status } from 'src/context/interfaces/IContext';
 import { Reducer } from 'src/context/types/reducer';
 
 export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE_QUIZ';
@@ -20,33 +20,35 @@ export const coreReducer: Reducer<CoreAction> = {
     },
     'START_QUIZ': (api) => {
         api.setState({
-            started: true 
+            status: Status.Active
         });
     },
     'SUBMIT': (api, value) => {
         const state = api.getState();
 
-        api.setState({
+        const newState: Partial<IContext> = {
             results: {
                 [state.current]: value, 
                 ...state.results 
             }
-        });
+        };
 
         if (state.current + 2 > state.questions.length) {
-            return;
+            newState.status = Status.Completed;
+        } else {
+            newState.current = state.current + 1;
         }
-		
-        api.setState({
-            current: state.current + 1
-        });
+
+        api.setState(newState);
     },
     'UPDATE_QUIZ': (api) => {
         const state = api.getState();
         const next = getNext(api);
+        const isLastQuestion = state.current === state.questions.length - 1;
 
         api.setState({
-            isNextDisabled: !state.results[next] || state.current === state.questions.length - 1,
+            isLastQuestion,
+            isNextDisabled: !state.results[next] || isLastQuestion,
             isPreviousDisabled: !state.current,
             question: state.questions[state.current],
             result: state.results[state.current]

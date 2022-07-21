@@ -19,8 +19,11 @@ interface IProps {
  */
 export const Container = (props: IProps): ReactElement => {
     const locale = useStore(c => c.locale);
+    const isLastQuestion = useStore(c => c.isLastQuestion);
     const dispatch = useDispatch();
 	
+    const text = isLastQuestion ? locale.submit : locale.ok;
+
     const handleSubmit = (): void => {
         dispatch({ type: 'SUBMIT', value: props.selected });
     };
@@ -36,7 +39,7 @@ export const Container = (props: IProps): ReactElement => {
             <ContainerButtons>
                 <SubmitContainer>
                     <SubmitButton disabled={props.disabled} onClick={handleSubmit}>
-                        {locale.submit} <Icon icon={faCheck} />
+                        {text} <Icon icon={faCheck} />
                     </SubmitButton>
                 </SubmitContainer>
                 <Navigation />

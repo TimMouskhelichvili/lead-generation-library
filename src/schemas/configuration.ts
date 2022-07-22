@@ -12,6 +12,12 @@ export const configurationSchema: Schema = {
         description: {
             type: 'string'
         },
+        endQuestions: {
+            items: { 
+                $ref: '/question'
+            },
+            type: 'array'
+        },
         image: {
             type: 'string'
         },
@@ -30,6 +36,12 @@ export const configurationSchema: Schema = {
         },
         randomize: {
             type: 'boolean'
+        },
+        startQuestions: {
+            items: { 
+                $ref: '/question'
+            },
+            type: 'array'
         },
         theme: {
             enum: Object.keys(themes),

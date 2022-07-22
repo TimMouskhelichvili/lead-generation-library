@@ -5,6 +5,8 @@ import { IQuestion } from 'src/interfaces/IQuestion';
 export interface IConfiguration {
 	title: string;
 	questions: IQuestion[];
+	endQuestions?: IQuestion[];
+	startQuestions?: IQuestion[];
 	description?: string;
 	image?: string;
 	randomize?: boolean;

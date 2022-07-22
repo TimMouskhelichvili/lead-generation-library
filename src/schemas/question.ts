@@ -1,43 +1,40 @@
 import { Schema } from 'jsonschema';
 
 export const questionSchema: Schema = {
+    additionalProperties: false,
     id: '/question',
     oneOf: [
         {
-            additionalProperties: false,
-            properties: {
-                answers: {
-                    items: { 
-                        $ref: '/answer'
-                    },
-                    type: 'array'
-                },
-                max: {
-                    type: 'number'
-                },
-                title: {
-                    type: 'string'
-                }
-            },
-            required: [ 'title', 'answers' ],
-            type: 'object'
-        },
+            required: [ 'answers' ]
+        }, 
         {
-            additionalProperties: false,
-            properties: {
-                placeholder: {
-                    type: 'string'
-                },
-                title: {
-                    type: 'string'
-                },
-                type: {
-                    enum: [ 'text' ],
-                    type: 'string'
-                }
-            },
-            required: [ 'title', 'type' ],
-            type: 'object'
+            required: [ 'type' ]
         }
-    ]
+    ],
+    properties: {
+        answers: {
+            items: { 
+                $ref: '/answer'
+            },
+            type: 'array'
+        },
+        hideNavigation: {
+            type: 'boolean'
+        },
+        max: {
+            type: 'number'
+        },
+        placeholder: {
+            type: 'string'
+        },
+        title: {
+            type: 'string'
+        },
+        type: {
+            enum: [ 'text' ],
+            type: 'string'
+        }
+    },
+    required: [ 'title' ],
+    type: 'object'
 };

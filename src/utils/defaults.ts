@@ -69,6 +69,14 @@ const getQuestions = (config: IConfiguration): IQuestion[] => {
         questions = questions.slice(0, config.pick);
     }
 
+    if (config.startQuestions) {
+        questions = [ ...config.startQuestions, ...questions ];
+    }
+
+    if (config.endQuestions) {
+        questions = [ ...questions, ...config.endQuestions ];
+    }
+
     return questions;
 };
 

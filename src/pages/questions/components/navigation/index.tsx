@@ -7,14 +7,19 @@ import { NavigationContainer, NavigationButton } from './style';
 /**
  * The Navigation component.
  */
-export const Navigation = (): ReactElement => {
+export const Navigation = (): ReactElement | null => {
     const isPreviousDisabled = useStore(c => c.isPreviousDisabled);
     const isNextDisabled = useStore(c => c.isNextDisabled);	
+    const question = useStore(c => c.question);
 
     const dispatch = useDispatch();
 
     const handleNext = (): void => dispatch({ type: 'NEXT' });
     const handlePrevious = (): void => dispatch({ type: 'PREVIOUS' });
+
+    if (question.hideNavigation) {
+        return null;
+    }
 
     return (
         <NavigationContainer>

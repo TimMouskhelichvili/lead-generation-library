@@ -7,9 +7,14 @@ export interface IQuestion {
 	type?: QuestionType;
 	
 	/**
-	 * For multiple answers.
+	 * The maximum number of accepted answers. For multiple choice questions.
 	 */
 	max?: number;
+
+	/**
+	 * The minimum number of accepted answers. For multiple choice questions.
+	 */
+	min?: number;
 
 	/**
 	 * Hides the navigation buttons.

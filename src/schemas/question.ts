@@ -24,6 +24,9 @@ export const questionSchema: Schema = {
         max: {
             type: 'number'
         },
+        min: {
+            type: 'number'
+        },
         placeholder: {
             type: 'string'
         },

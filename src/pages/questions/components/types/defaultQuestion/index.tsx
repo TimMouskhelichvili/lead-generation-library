@@ -13,8 +13,8 @@ export const DefaultQuestion = (): ReactElement => {
     const explanation = useExplanation(question);
 
     const [ selected, handleChange ] = useSelected(question, result);
-    const maxLength = isMulti(question) ? Number(question.max) : 1;
-    const disabled = selected.length !== maxLength;
+
+    const disabled = selected.length < getMin(question) || selected.length > getMax(question);
 
     return (
         <Container title={question.title} selected={selected} explanation={explanation} disabled={disabled}>
@@ -43,11 +43,13 @@ const useSelected = (question: IQuestion, result?: string[]): [ string[], Handle
     const change = (answer: string) => (): void => {
         const newSelected = [ ...selected ];
 
+        const max = Math.max(getMin(question), getMax(question));
+
         if (selected.includes(answer)) {
             setSelected(newSelected.filter((item) => item !== answer));
         } else if (!isMulti(question)) {
             setSelected([ answer ]);
-        } else if (newSelected.length < Number(question.max)) {
+        } else if (newSelected.length < max) {
             setSelected([ answer, ...newSelected ]);	
         }
     };
@@ -75,17 +77,43 @@ const useSelected = (question: IQuestion, result?: string[]): [ string[], Handle
  * @param {IQuestion} question - The question. 
  */
 const useExplanation = (question: IQuestion): string => {
-    const { selectMultipleAnswers, selectOneAnswer } = useStore(c => c.locale);
+    const locale = useStore(c => c.locale);
 
-    if (isMulti(question)) {
-        return selectMultipleAnswers.replace('{0}', String(question.max));
+    const max = getMax(question);
+    const min = getMin(question);
+
+    const hasMax = max > 1;
+    const hasMin = min > 1;
+
+    if (hasMax && hasMin && max > min) {
+        return locale.selectAnswersFromTo
+            .replace('{0}', String(question.min))
+            .replace('{1}', String(question.max));
+    } else if (hasMin) {
+        return locale.selectAnswers.replace('{0}', String(question.min));
+    } else if (hasMax) {
+        return locale.selectAnswersUpTo.replace('{0}', String(question.max));
     }
     
-    return selectOneAnswer;
+    return locale.selectOneAnswer;
 };
 
 /**
  * Returns if quesion accepts multiple answers.
- * @param {IQuestion} question - The question. 
+ * @param {IQuestion} question - The question.
  */
-const isMulti = (question: IQuestion): boolean => Number(question.max) > 1;
+const isMulti = (question: IQuestion): boolean => {
+    return getMax(question) > 1 || getMin(question) > 1;
+};
+
+/**
+ * Returns the maximum number of accepted answers.
+ * @param {IQuestion} question - The question.
+ */
+const getMax = (question: IQuestion): number => question.max || question.min || 1;
+
+/**
+ * Returns the minimum number of accepted answers.
+ * @param {IQuestion} question - The question.
+ */
+const getMin = (question: IQuestion): number => question.min || 1;

@@ -12,3 +12,11 @@ export const Input = styled.input`
 		outline: 1px solid ${(p): string => p.theme.colors.color};
 	}
 `;
+
+export const ErrorField = styled.div`
+	color: red;
+
+	&:empty {
+		display: none;
+	}
+`;

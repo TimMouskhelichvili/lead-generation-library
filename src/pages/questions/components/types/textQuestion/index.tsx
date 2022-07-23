@@ -1,8 +1,9 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
-import { IQuestion } from 'src/interfaces/IQuestion';
+import { IQuestion, ValidateType } from 'src/interfaces/IQuestion';
 import { useStore } from 'src/context';
-import { Input } from './style';
+import { ErrorField, Input } from './style';
+import { validate } from 'jsonschema';
 
 /**
  * The TextQuestion component.
@@ -10,17 +11,20 @@ import { Input } from './style';
 export const TextQuestion = (): ReactElement => {
     const question = useStore(c => c.question);
     const result = useStore(c => c.result);
+    
     const [ value, handleChange ] = useValue(question, result);
- 
+    const [ showError, error, handleBlur ] = useError(question, value);
+    
     const selected = value ? [ value ] : [];
-    const disabled = !value;
 
     return (
-        <Container title={question.title} selected={selected} disabled={disabled}>
-            <Input 
+        <Container title={question.title} selected={selected} disabled={Boolean(error)}>
+            <Input
                 placeholder={question.placeholder} 
                 value={value}
+                onBlur={handleBlur}
                 onChange={handleChange} />
+            <ErrorField>{showError && error}</ErrorField>
         </Container>
     );
 };
@@ -55,4 +59,44 @@ const useValue = (question: IQuestion, result?: string[]): [ string, HandleType 
         value,
         handleChange
     ];
+};
+
+/**
+ * The error hook.
+ * @param {IQuestion} question - The question. 
+ * @param {IQuestion} value - The value. 
+ */
+const useError = (question: IQuestion, value: string): [ boolean, string | null, () => void ] => {
+    const [ showError, setShowError ] = useState(false); 
+    const verify = useVerify(question, value);
+
+    const handleBlur = (): void => setShowError(true);
+
+    return [
+        showError,
+        verify,
+        handleBlur
+    ];
+};
+
+/**
+ * The verify hook.
+ * @param {IQuestion} question - The question. 
+ * @param {IQuestion} value - The value. 
+ */
+const useVerify = (question: IQuestion, value: string): string | null => {
+    const locale = useStore(c => c.locale);
+
+    if (!value) {
+        return locale.invalidField;
+    }
+
+    if (question.validate === ValidateType.email) {
+        const res = validate(value, { format: 'email', type: 'string' });
+        if (res.errors.length) {
+            return locale.invalidEmail;
+        }
+    }
+
+    return null;
 };

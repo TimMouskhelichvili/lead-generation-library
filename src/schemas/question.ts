@@ -1,4 +1,5 @@
 import { Schema } from 'jsonschema';
+import { QuestionType, ValidateType } from 'src/interfaces/IQuestion';
 
 export const questionSchema: Schema = {
     additionalProperties: false,
@@ -34,7 +35,11 @@ export const questionSchema: Schema = {
             type: 'string'
         },
         type: {
-            enum: [ 'text' ],
+            enum: Object.keys(QuestionType),
+            type: 'string'
+        },
+        validate: {
+            enum: Object.keys(ValidateType),
             type: 'string'
         }
     },

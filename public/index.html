@@ -49,12 +49,13 @@
 			});
 		}
 
-		const endQuestions = [
+		const startQuestions = [
 			{
 				placeholder: 'your email',
 				type: 'text',
 				title: 'Please enter your email',
-				hideNavigation: true
+				hideNavigation: true,
+				validate: 'email'
 			}
 		];
 
@@ -64,7 +65,7 @@
 			image: 'https://s3-us-west-1.amazonaws.com/tryinteract-uploads/5c0f606f5f0f8d0013312fbe/_1282c3d0-2af3-11e9-aa6b-1b5e183061e0.jpg',
 			theme: 'light',
 			questions,
-			endQuestions,
+			startQuestions,
 			randomize: true,
 			pick: 5,
 			customLocale: {

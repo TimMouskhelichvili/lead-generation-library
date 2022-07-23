@@ -49,3 +49,7 @@ export const SubmitButton = styled.button`
 export const SubmitContainer = styled.div`
 	flex-grow: 1;
 `;
+
+export const ContainerDescription = styled.div`
+	margin-top: 10px;
+`;

@@ -19,6 +19,9 @@ export const questionSchema: Schema = {
             },
             type: 'array'
         },
+        description: {
+            type: 'string'
+        },
         hideNavigation: {
             type: 'boolean'
         },

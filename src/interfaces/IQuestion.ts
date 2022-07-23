@@ -50,4 +50,9 @@ export interface IQuestion {
 	 */
 	placeholder?: string;
 
+	/**
+	 * The description.
+	 */
+	description?: string;
+
 }

@@ -23,10 +23,10 @@ export const Navigation = (): ReactElement | null => {
 
     return (
         <NavigationContainer>
-            <NavigationButton onClick={handlePrevious} disabled={isPreviousDisabled}>
+            <NavigationButton onClick={handlePrevious} disabled={isPreviousDisabled} type='button'>
                 <Icon icon={faChevronLeft} />
             </NavigationButton>
-            <NavigationButton onClick={handleNext} disabled={isNextDisabled}>
+            <NavigationButton onClick={handleNext} disabled={isNextDisabled} type='button'>
                 <Icon icon={faChevronRight} />
             </NavigationButton>
         </NavigationContainer>

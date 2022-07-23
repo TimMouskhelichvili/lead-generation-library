@@ -22,7 +22,8 @@ export const DefaultQuestion = (): ReactElement => {
                 <DefaultAnswer 
                     key={answer.answer} 
                     current={selected.includes(answer.answer)} 
-                    onClick={handleChange(answer.answer)}>
+                    onClick={handleChange(answer.answer)}
+                    type='button'>
                     {answer.answer}
                 </DefaultAnswer>
             ))}

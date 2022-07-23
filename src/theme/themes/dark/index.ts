@@ -8,6 +8,7 @@ const defaultColors = {
     background: '#181e1f',
     border: '#232c2d',
     color: '#f6fbfc',
+    error: 'red',
     primary: '#BD4B4B',
     primaryDarken: darken(.1, '#BD4B4B')
 };

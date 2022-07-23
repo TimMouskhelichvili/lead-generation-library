@@ -14,7 +14,7 @@ export const Input = styled.input`
 `;
 
 export const ErrorField = styled.div`
-	color: red;
+	color: ${(p): string => p.theme.colors.error};
 
 	&:empty {
 		display: none;

@@ -24,12 +24,13 @@ export const Container = (props: IProps): ReactElement => {
 	
     const text = isLastQuestion ? locale.submit : locale.ok;
 
-    const handleSubmit = (): void => {
+    const handleSubmit = (e: React.FormEvent): void => {
+        e.preventDefault();
         dispatch({ type: 'SUBMIT', value: props.selected });
     };
 
     return (
-        <div>
+        <form onSubmit={handleSubmit}>
             <ContainerTitle>{props.title}</ContainerTitle>
             {props.explanation && 
 				<ContainerExplanation>{props.explanation}</ContainerExplanation>}
@@ -38,12 +39,12 @@ export const Container = (props: IProps): ReactElement => {
             </ContainerContent>
             <ContainerButtons>
                 <SubmitContainer>
-                    <SubmitButton disabled={props.disabled} onClick={handleSubmit}>
+                    <SubmitButton disabled={props.disabled} type='submit'>
                         {text} <Icon icon={faCheck} />
                     </SubmitButton>
                 </SubmitContainer>
                 <Navigation />
             </ContainerButtons>
-        </div>
+        </form>
     );
 };

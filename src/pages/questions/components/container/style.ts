@@ -8,6 +8,9 @@ export const ContainerTitle = styled.h1`
 
 export const ContainerContent = styled.div`
 	margin: 20px 0px;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 10px;
 `;
 
 export const ContainerExplanation = styled.div`

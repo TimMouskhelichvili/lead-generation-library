@@ -6,6 +6,12 @@ export const answerSchema: Schema = {
     properties: {
         answer: {
             type: 'string'
+        },
+        description: {
+            type: 'string'
+        },
+        image: {
+            type: 'string'
         }
     },
     required: [ 'answer' ],

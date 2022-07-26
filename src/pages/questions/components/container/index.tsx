@@ -33,6 +33,7 @@ export const Container = (props: IProps): ReactElement => {
     const dispatch = useDispatch();
 	
     const text = isLastQuestion ? locale.submit : locale.ok;
+    const columns = question.columns || 1;
 
     const handleSubmit = (e: React.FormEvent): void => {
         e.preventDefault();
@@ -46,7 +47,7 @@ export const Container = (props: IProps): ReactElement => {
 				<ContainerDescription dangerouslySetInnerHTML={{ __html: question.description }} />}
             {props.explanation && 
 				<ContainerExplanation>{props.explanation}</ContainerExplanation>}
-            <ContainerContent>
+            <ContainerContent columns={columns}>
                 {props.children}
             </ContainerContent>
             <ContainerButtons>

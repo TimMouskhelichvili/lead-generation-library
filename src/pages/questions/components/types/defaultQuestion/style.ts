@@ -22,3 +22,13 @@ export const DefaultAnswer = styled.button<{ current: boolean; }>`
 		}
 	`}
 `;
+
+export const DefaultImg = styled.img`
+	border-radius: ${(p): string => p.theme.global.radius};
+	width: 100%;
+	margin-bottom: 10px;
+`;
+
+export const DefaultDescription = styled.div`
+	margin-top: 10px;
+`;

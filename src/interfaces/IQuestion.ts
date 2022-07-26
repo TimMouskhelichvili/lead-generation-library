@@ -55,4 +55,9 @@ export interface IQuestion {
 	 */
 	description?: string;
 
+	/**
+	 * The number of answers per row. Default is 1.
+	 */
+	columns?: number;
+
 }

@@ -1,8 +1,9 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { IAnswer } from 'src/interfaces/IAnswer';
 import { useStore } from 'src/context';
-import { DefaultAnswer } from './style';
+import { DefaultAnswer, DefaultImg, DefaultDescription } from './style';
 
 /**
  * The DefaultQuestion component.
@@ -24,21 +25,33 @@ export const DefaultQuestion = (): ReactElement => {
                     current={selected.includes(answer.answer)} 
                     onClick={handleChange(answer.answer)}
                     type='button'>
-                    {answer.answer}
+                    {getAnswer(answer)}
                 </DefaultAnswer>
             ))}
         </Container>
     );
 };
 
-type HandleChange = (answer: string) => () => void;
+/**
+ * Returns the answer element.
+ * @param {IAnswer} answer - The answer.
+ */
+const getAnswer = (answer: IAnswer): ReactElement => (
+    <>
+        {answer.image &&
+			<DefaultImg src={answer.image} alt={answer.answer} />}
+        {answer.answer}
+        {answer.description &&
+			<DefaultDescription dangerouslySetInnerHTML={{ __html: answer.description }} />}
+    </>
+);
 
 /**
  * The selected hook.
  * @param {IQuestion} question - The question. 
  * @param {string[]} result - The result. 
  */
-const useSelected = (question: IQuestion, result?: string[]): [ string[], HandleChange ] => {
+const useSelected = (question: IQuestion, result?: string[]): [ string[], (answer: string) => () => void ] => {
     const [ selected, setSelected ] = useState<string[]>([]);
 
     const change = (answer: string) => (): void => {

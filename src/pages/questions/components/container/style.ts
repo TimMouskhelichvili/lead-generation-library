@@ -6,10 +6,10 @@ export const ContainerTitle = styled.h1`
 	margin: 0px;
 `;
 
-export const ContainerContent = styled.div`
+export const ContainerContent = styled.div<{ columns: number; }>`
 	margin: 20px 0px;
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: ${(p): string => '1fr '.repeat(p.columns).trim()};
 	gap: 10px;
 `;
 

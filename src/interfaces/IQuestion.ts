@@ -16,6 +16,11 @@ export interface IQuestion {
 	title: string;
 
 	/**
+	 * The id.
+	 */
+	id: string;
+
+	/**
 	 * The type of question. (text).
 	 */
 	type?: QuestionType;

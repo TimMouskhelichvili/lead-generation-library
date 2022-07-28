@@ -29,7 +29,7 @@ export const coreReducer: Reducer<CoreAction> = {
         const newState: Partial<IContext> = {
             results: {
                 ...state.results,
-                [state.current]: value 
+                [state.questions[state.current].id]: value 
             }
         };
 

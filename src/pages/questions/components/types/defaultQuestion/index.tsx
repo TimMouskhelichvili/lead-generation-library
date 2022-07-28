@@ -21,9 +21,9 @@ export const DefaultQuestion = (): ReactElement => {
         <Container title={question.title} selected={selected} explanation={explanation} disabled={disabled}>
             {question.answers?.map((answer) => (
                 <DefaultAnswer 
-                    key={answer.answer} 
-                    current={selected.includes(answer.answer)} 
-                    onClick={handleChange(answer.answer)}
+                    key={answer.id}
+                    current={selected.includes(answer.id)} 
+                    onClick={handleChange(answer.id)}
                     type='button'>
                     {getAnswer(answer)}
                 </DefaultAnswer>

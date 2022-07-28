@@ -28,6 +28,9 @@ export const questionSchema: Schema = {
         hideNavigation: {
             type: 'boolean'
         },
+        id: {
+            type: 'string'
+        },
         max: {
             type: 'number'
         },
@@ -49,6 +52,6 @@ export const questionSchema: Schema = {
             type: 'string'
         }
     },
-    required: [ 'title' ],
+    required: [ 'title', 'id' ],
     type: 'object'
 };

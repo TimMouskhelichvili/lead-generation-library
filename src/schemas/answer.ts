@@ -10,10 +10,13 @@ export const answerSchema: Schema = {
         description: {
             type: 'string'
         },
+        id: {
+            type: 'string'
+        },
         image: {
             type: 'string'
         }
     },
-    required: [ 'answer' ],
+    required: [ 'answer', 'id' ],
     type: 'object'
 };

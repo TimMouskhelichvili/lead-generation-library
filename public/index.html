@@ -27,29 +27,33 @@
 	<div id="quiz"></div>
 	<script>
 		const questions = [];
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 2; i++) {
 			questions.push({
 				description: 'Discover your celeb <strong>persona</strong> — and learn how to uncork your persona.',
 				answers: [
 					{
 						image: 'https://s3-us-west-1.amazonaws.com/tryinteract-uploads/5c0f606f5f0f8d0013312fbe/_1282c3d0-2af3-11e9-aa6b-1b5e183061e0.jpg',
-						answer: `${i} Classic — an elegant, curve-hugging black dress with a little extra bling on the ears`
+						answer: `${i} Classic — an elegant, curve-hugging black dress with a little extra bling on the ears`,
+						id: `a${i}_1`
 					},
 					{
 						answer: `${i} Edgy elegance — a fierce red gown with a plunging neckline`,
-						description: 'Discover your celeb <strong>persona</strong> — and learn how to uncork your persona.'
+						description: 'Discover your celeb <strong>persona</strong> — and learn how to uncork your persona.',
+						id: `a${i}_2`
 					},
 					{
-						answer: `${i} Showstopper — a statement-making ensemble that looks like it could be a work of art`
+						answer: `${i} Showstopper — a statement-making ensemble that looks like it could be a work of art`,
+						id: `a${i}_3`
 					},
 					{
-						answer: `${i} Vintage Hollywood glamour — Kathryn Hepburn, eat your heart out!`
+						answer: `${i} Vintage Hollywood glamour — Kathryn Hepburn, eat your heart out!`,
+						id: `a${i}_4`
 					}
 				],
 				max: 3,
 				min: 2,
-				columns: 2,
 				title: 'How many resolutions do you have?',
+				id: `q${i}`
 			});
 		}
 
@@ -60,7 +64,8 @@
 				type: 'text',
 				title: 'Please enter your email',
 				hideNavigation: true,
-				validate: 'email'
+				validate: 'email',
+				id: 'f1'
 			}
 		];
 

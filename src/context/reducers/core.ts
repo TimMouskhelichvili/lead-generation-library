@@ -1,8 +1,9 @@
 import { StoreApi } from 'zustand';
 import { IContext, Status } from 'src/context/interfaces/IContext';
 import { Reducer } from 'src/context/types/reducer';
+import { sendResults } from 'src/apis';
 
-export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE';
+export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE' | 'SEND';
 
 /**
  * The core reducer.
@@ -16,6 +17,20 @@ export const coreReducer: Reducer<CoreAction> = {
     'PREVIOUS': (api) => {
         api.setState({
             current: api.getState().current - 1
+        });
+    },
+    'SEND': async (api) => {
+        const state = api.getState();
+        let error = false;
+	
+        try {
+            await sendResults(state.results);
+        } catch {
+            error = true;
+        }
+	
+        api.setState({
+            status: error ? Status.Active : Status.Completed
         });
     },
     'START_QUIZ': (api) => {

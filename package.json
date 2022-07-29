@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "axios": "^0.27.2",
     "jsonschema": "^1.4.1",
     "polished": "^4.2.2",
     "react": "^18.2.0",

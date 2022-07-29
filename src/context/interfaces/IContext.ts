@@ -1,4 +1,5 @@
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { IResults } from 'src/interfaces/IResults';
 import { MyLocale } from 'src/locale';
 
 export enum Status {
@@ -19,9 +20,7 @@ export interface IContext {
 	question: IQuestion;
 	locale: MyLocale;
 	current: number;
-	results: { 
-		[ key: string ]: string[]; 
-	};
+	results: IResults;
 
 	isPreviousDisabled?: boolean;
 	isNextDisabled?: boolean;

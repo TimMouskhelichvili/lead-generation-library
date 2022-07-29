@@ -26,32 +26,25 @@ export const coreReducer: Reducer<CoreAction> = {
     'SUBMIT': (api, value) => {
         const state = api.getState();
 
-        const newState: Partial<IContext> = {
+        api.setState({
+            current: getNext(api),
             results: {
                 ...state.results,
                 [state.questions[state.current].id]: value 
             }
-        };
-
-        if (state.current + 2 > state.questions.length) {
-            newState.status = Status.Completed;
-        } else {
-            newState.current = state.current + 1;
-        }
-
-        api.setState(newState);
+        });
     },
     'UPDATE_QUIZ': (api) => {
         const state = api.getState();
-        const next = getNext(api);
         const isLastQuestion = state.current === state.questions.length - 1;
+        const result = getResult(api, state.current);
 
         api.setState({
             isLastQuestion,
-            isNextDisabled: !state.results[next] || isLastQuestion,
+            isNextDisabled: !result || isLastQuestion,
             isPreviousDisabled: !state.current,
             question: state.questions[state.current],
-            result: state.results[state.current]
+            result
         });
     }
 };
@@ -68,4 +61,17 @@ const getNext = (api: StoreApi<IContext>): number => {
     }
 
     return current;
+};
+
+/**
+ * Returns the result from the index.
+ * @param {StoreApi<IContext>} api - The api.
+ * @param {number} index - The index. 
+ */
+const getResult = (api: StoreApi<IContext>, index: number): string[] | undefined => {
+    const state = api.getState();
+
+    const id = state.questions[index]?.id;
+
+    return state.results[id];
 };

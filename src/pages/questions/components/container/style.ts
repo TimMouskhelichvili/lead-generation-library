@@ -53,3 +53,12 @@ export const SubmitContainer = styled.div`
 export const ContainerDescription = styled.div`
 	margin-top: 10px;
 `;
+
+export const ContainerError = styled.div`
+	color: ${(p): string => p.theme.colors.error};
+	margin-top: 10px;
+
+	&:empty {
+		display: none;
+	}
+`;

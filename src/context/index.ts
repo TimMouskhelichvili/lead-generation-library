@@ -2,10 +2,14 @@ import createContext from 'zustand/context';
 import { StoreApi } from 'zustand';
 import { DispatchParams } from 'src/context/types/dispatch';
 import { IContext } from 'src/context/interfaces/IContext';
+import { quizReducer } from 'src/context/reducers/quiz';
 import { coreReducer } from 'src/context/reducers/core';
+import { apiReducer } from 'src/context/reducers/api';
 
 const store = {
-    ...coreReducer
+    ...coreReducer,
+    ...quizReducer,
+    ...apiReducer
 };
 
 export const { 

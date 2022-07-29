@@ -11,7 +11,8 @@ import {
     SubmitButton, 
     SubmitContainer, 
     ContainerExplanation, 
-    ContainerDescription 
+    ContainerDescription, 
+    ContainerError
 } from './style';
 
 interface IProps {
@@ -28,6 +29,8 @@ interface IProps {
  */
 export const Container = (props: IProps): ReactElement => {
     const question = useStore(c => c.question);
+    const error = useStore(c => c.error);
+
     const dispatch = useDispatch();
     const button = useButton(props);
 	
@@ -54,6 +57,7 @@ export const Container = (props: IProps): ReactElement => {
                 </SubmitContainer>
                 <Navigation />
             </ContainerButtons>
+            <ContainerError>{error}</ContainerError>
         </form>
     );
 };

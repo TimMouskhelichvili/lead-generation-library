@@ -25,4 +25,5 @@ export interface IContext {
 	isPreviousDisabled?: boolean;
 	isNextDisabled?: boolean;
 	isLastQuestion?: boolean;
+	error?: string;
 }

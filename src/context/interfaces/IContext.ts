@@ -4,7 +4,8 @@ import { MyLocale } from 'src/locale';
 export enum Status {
 	NotStarted,
 	Active, 
-	Completed
+	Completed,
+	Submitting
 }
 
 export interface IContext {	

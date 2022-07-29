@@ -16,7 +16,7 @@ export const Quiz = (): ReactElement => {
     useContextUpdates();
 
     const getElementByStatus = (): ReactElement => {
-        if (status === Status.Active) {
+        if ([ Status.Active, Status.Submitting ].includes(status)) {
             return <Questions />;
         } else if (status === Status.Completed) {
             return <Results />;

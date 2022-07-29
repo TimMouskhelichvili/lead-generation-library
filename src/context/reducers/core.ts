@@ -38,13 +38,16 @@ export const coreReducer: Reducer<CoreAction> = {
         const state = api.getState();
         const isLastQuestion = state.current === state.questions.length - 1;
         const result = getResult(api, state.current);
+        const isSubmitting = result && isLastQuestion;
+        const status = isSubmitting ? Status.Submitting : state.status;
 
         api.setState({
             isLastQuestion,
             isNextDisabled: !result || isLastQuestion,
-            isPreviousDisabled: !state.current,
+            isPreviousDisabled: !state.current || isSubmitting,
             question: state.questions[state.current],
-            result
+            result,
+            status
         });
     }
 };

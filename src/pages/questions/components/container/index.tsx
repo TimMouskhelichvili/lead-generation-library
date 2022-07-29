@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Navigation } from 'src/pages/questions/components/navigation';
+import { Status } from 'src/context/interfaces/IContext';
 import { useDispatch, useStore } from 'src/context';
 import { Icon } from 'src/components/icon';
 import { 
@@ -26,13 +27,10 @@ interface IProps {
  * @param {IProps} props - The props.
  */
 export const Container = (props: IProps): ReactElement => {
-    const isLastQuestion = useStore(c => c.isLastQuestion);
     const question = useStore(c => c.question);
-    const locale = useStore(c => c.locale);
-
     const dispatch = useDispatch();
+    const button = useButton(props);
 	
-    const text = isLastQuestion ? locale.submit : locale.ok;
     const columns = question.columns || 1;
 
     const handleSubmit = (e: React.FormEvent): void => {
@@ -52,12 +50,37 @@ export const Container = (props: IProps): ReactElement => {
             </ContainerContent>
             <ContainerButtons>
                 <SubmitContainer>
-                    <SubmitButton disabled={props.disabled} type='submit'>
-                        {text} <Icon icon={faCheck} />
-                    </SubmitButton>
+                    {button}
                 </SubmitContainer>
                 <Navigation />
             </ContainerButtons>
         </form>
+    );
+};
+
+/**
+ * The Button hook.
+ * @param {IProps} props - The props.
+ */
+const useButton = (props: IProps): ReactElement => {
+    const status = useStore(c => c.status);
+    const isLastQuestion = useStore(c => c.isLastQuestion);
+    const locale = useStore(c => c.locale);
+    const isSubmitting = status === Status.Submitting;
+
+    const getText = (): ReactElement => {
+        const text = isLastQuestion ? locale.submit : locale.ok;
+
+        if (isSubmitting) {
+            return <>{locale.submitting}</>;
+        }
+		
+        return <>{text} <Icon icon={faCheck} /></>;
+    };
+
+    return (
+        <SubmitButton disabled={props.disabled || isSubmitting} type='submit'>
+            {getText()}
+        </SubmitButton>
     );
 };

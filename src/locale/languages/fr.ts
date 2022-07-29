@@ -9,5 +9,6 @@ export const frLocale: MyLocale = {
     selectAnswersUpTo: '(sélectionner jusqu\'à {0} réponses)',
     selectOneAnswer: '(sélectionner une réponse)',
     start: 'Commencer Quiz',
-    submit: 'Soumetter'
+    submit: 'Soumetter',
+    submitting: 'soumission...'
 };

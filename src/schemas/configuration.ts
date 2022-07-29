@@ -37,6 +37,9 @@ export const configurationSchema: Schema = {
         randomize: {
             type: 'boolean'
         },
+        sendResults: {
+            type: 'boolean'
+        },
         startQuestions: {
             items: { 
                 $ref: '/question'

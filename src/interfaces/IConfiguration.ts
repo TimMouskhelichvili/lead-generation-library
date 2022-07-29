@@ -14,4 +14,5 @@ export interface IConfiguration {
 	theme?: MyTheme;
 	language?: MyLanguage;
 	customLocale?: MyLocale;
+	sendResults?: boolean;
 }

@@ -37,6 +37,8 @@ export const validateConfig = (config: IConfiguration): void => {
  */
 export const getDefaultState = (config: IConfiguration): IContext => {
     const questions = getQuestions(config);
+    const sendResults = typeof config.sendResults !== 'undefined' ? 
+        config.sendResults : true;
 
     return {
         current: 0,
@@ -46,6 +48,7 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         question: questions[0],
         questions,
         results: {},
+        sendResults,
         status: Status.NotStarted,
         title: config.title
     };

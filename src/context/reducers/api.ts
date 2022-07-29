@@ -11,8 +11,13 @@ export const apiReducer: Reducer<ApiAction> = {
     'SEND': async (api) => {
         const state = api.getState();
         let error = false;
-	
+
         api.setState({ error: '' });
+	
+        if (!state.sendResults) {
+            api.setState({ status: Status.Completed });
+            return;
+        }
 
         try {
             await sendResults(state.results);

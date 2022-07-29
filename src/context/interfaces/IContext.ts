@@ -21,6 +21,7 @@ export interface IContext {
 	locale: MyLocale;
 	current: number;
 	results: IResults;
+	sendResults: boolean;
 
 	isPreviousDisabled?: boolean;
 	isNextDisabled?: boolean;

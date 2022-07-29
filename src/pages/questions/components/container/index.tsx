@@ -72,7 +72,7 @@ const useButton = (props: IProps): ReactElement => {
     const locale = useStore(c => c.locale);
     const isSubmitting = status === Status.Submitting;
 
-    const getText = (): ReactElement => {
+    const getButtonText = (): ReactElement => {
         const text = isLastQuestion ? locale.submit : locale.ok;
 
         if (isSubmitting) {
@@ -84,7 +84,7 @@ const useButton = (props: IProps): ReactElement => {
 
     return (
         <SubmitButton disabled={props.disabled || isSubmitting} type='submit'>
-            {getText()}
+            {getButtonText()}
         </SubmitButton>
     );
 };

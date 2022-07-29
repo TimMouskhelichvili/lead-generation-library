@@ -1,4 +1,5 @@
 export const enLocale = {
+    errorSubmitting: 'An error happened, please retry...',
     invalidEmail: 'Please enter a valid email.',
     invalidField: 'Please enter a valid value.',
     ok: 'Ok',

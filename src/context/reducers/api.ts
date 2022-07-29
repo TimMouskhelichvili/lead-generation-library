@@ -21,7 +21,7 @@ export const apiReducer: Reducer<ApiAction> = {
         }
 	
         api.setState({
-            error: error ? 'An error happened, please retry...' : '',
+            error: error ? state.locale.errorSubmitting : '',
             status: error ? Status.Active : Status.Completed
         });
     }

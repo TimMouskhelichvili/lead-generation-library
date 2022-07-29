@@ -10,6 +10,6 @@ export const useContextUpdates = (): void => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch({ type: 'UPDATE_QUIZ' });
+        dispatch({ type: 'UPDATE' });
     }, [ current, results ]);
 };

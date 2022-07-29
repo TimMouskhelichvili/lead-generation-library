@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
+import { Status } from 'src/context/interfaces/IContext';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { IAnswer } from 'src/interfaces/IAnswer';
 import { useStore } from 'src/context';
@@ -53,8 +54,13 @@ const getAnswer = (answer: IAnswer): ReactElement => (
  */
 const useSelected = (question: IQuestion, result?: string[]): [ string[], (answer: string) => () => void ] => {
     const [ selected, setSelected ] = useState<string[]>([]);
+    const status = useStore(c => c.status);
 
     const change = (answer: string) => (): void => {
+        if (status === Status.Submitting) {
+            return;
+        }
+
         const newSelected = [ ...selected ];
 
         const max = Math.max(getMin(question), getMax(question));

@@ -2,7 +2,7 @@ import { StoreApi } from 'zustand';
 import { IContext, Status } from 'src/context/interfaces/IContext';
 import { Reducer } from 'src/context/types/reducer';
 
-export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE_QUIZ';
+export type CoreAction = 'START_QUIZ' | 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE';
 
 /**
  * The core reducer.
@@ -34,7 +34,7 @@ export const coreReducer: Reducer<CoreAction> = {
             }
         });
     },
-    'UPDATE_QUIZ': (api) => {
+    'UPDATE': (api) => {
         const state = api.getState();
         const isLastQuestion = state.current === state.questions.length - 1;
         const result = getResult(api, state.current);

@@ -27,6 +27,8 @@ export const DefaultAnswer = styled.button<{ current: boolean; }>`
 export const DefaultImg = styled.img`
 	border-radius: ${(p): string => p.theme.global.radius};
 	width: 100%;
+	object-fit: cover;
+	height: 250px;
 	margin-bottom: 10px;
 `;
 

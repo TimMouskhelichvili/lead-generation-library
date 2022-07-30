@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons/faChevronLeft';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons/faChevronRight';
 import { useDispatch, useStore } from 'src/context';
 import { Icon } from 'src/components/icon';
 import { NavigationContainer, NavigationButton } from './style';

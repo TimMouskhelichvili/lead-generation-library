@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import { useStore } from 'src/context';
 import { IAnswers } from 'src/interfaces/IAnswers';
 import { IResults } from 'src/interfaces/IResults';
+import { useStore } from 'src/context';
 import { ScoreAnswers, ScoreContent, ScoreTitle, ScoreContainer } from './style';
 
 /**

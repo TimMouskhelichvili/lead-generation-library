@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { Navigation } from 'src/pages/questions/components/navigation';
 import { Status } from 'src/context/interfaces/IContext';
 import { useDispatch, useStore } from 'src/context';

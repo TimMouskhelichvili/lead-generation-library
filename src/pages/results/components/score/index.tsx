@@ -17,7 +17,7 @@ export const Score = (): ReactElement | null => {
     }
 
     const length = Object.keys(answers).length;
-    const correct = getCorrectAnswer(results, answers);
+    const correct = getCorrectCount(results, answers);
     const score = `${Math.floor(correct / length * 100)}%`;
 
     return (
@@ -37,11 +37,11 @@ export const Score = (): ReactElement | null => {
 };
 
 /**
- * Returns the correct the answers.
+ * Returns the correct answers count.
  * @param {IResults} results - The results. 
  * @param {IAnswers} answers - The answers. 
  */
-const getCorrectAnswer = (results: IResults, answers: IAnswers): number => {
+const getCorrectCount = (results: IResults, answers: IAnswers): number => {
     let cpt = 0;
 
     for (const i in answers) {

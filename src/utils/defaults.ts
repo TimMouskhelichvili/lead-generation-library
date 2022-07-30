@@ -37,11 +37,10 @@ export const validateConfig = (config: IConfiguration): void => {
  */
 export const getDefaultState = (config: IConfiguration): IContext => {
     const questions = getQuestions(config);
-    const sendResults = typeof config.sendResults !== 'undefined' ? 
-        config.sendResults : true;
 
     return {
         answers: config.answers,
+        config,
         current: 0,
         description: config.description,
         image: config.image,
@@ -49,7 +48,8 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         question: questions[0],
         questions,
         results: {},
-        sendResults,
+        sendResults: config.sendResults ?? true,
+        showRetry: config.showRetry,
         status: Status.NotStarted,
         title: config.title
     };

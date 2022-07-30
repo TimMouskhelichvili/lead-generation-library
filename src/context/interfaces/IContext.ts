@@ -1,3 +1,4 @@
+import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { IAnswers } from 'src/interfaces/IAnswers';
 import { IResults } from 'src/interfaces/IResults';
@@ -17,7 +18,8 @@ export interface IContext {
 	image?: string;
 	result?: string[];
 
-	status: Status,
+	config: IConfiguration;
+	status: Status;
 	question: IQuestion;
 	locale: MyLocale;
 	current: number;
@@ -29,4 +31,5 @@ export interface IContext {
 	isLastQuestion?: boolean;
 	error?: string;
 	answers?: IAnswers;
+	showRetry?: boolean;
 }

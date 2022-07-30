@@ -16,5 +16,6 @@ export interface IConfiguration {
 	language?: MyLanguage;
 	customLocale?: MyLocale;
 	sendResults?: boolean;
+	showRetry?: boolean;
 	answers?: IAnswers;
 }

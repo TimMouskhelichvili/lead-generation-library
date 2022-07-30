@@ -49,6 +49,9 @@ export const configurationSchema: Schema = {
         sendResults: {
             type: 'boolean'
         },
+        showRetry: {
+            type: 'boolean'
+        },
         startQuestions: {
             items: { 
                 $ref: '/question'

@@ -1,6 +1,7 @@
+import { IQuestion } from 'src/interfaces/IQuestion';
+import { IAnswers } from 'src/interfaces/IAnswers';
 import { MyLanguage, MyLocale } from 'src/locale';
 import { MyTheme } from 'src/theme';
-import { IQuestion } from 'src/interfaces/IQuestion';
 
 export interface IConfiguration {
 	title: string;
@@ -15,4 +16,5 @@ export interface IConfiguration {
 	language?: MyLanguage;
 	customLocale?: MyLocale;
 	sendResults?: boolean;
+	answers?: IAnswers;
 }

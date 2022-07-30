@@ -6,6 +6,15 @@ export const configurationSchema: Schema = {
     additionalProperties: false,
     id: '/configuration',
     properties: {
+        answers: {
+            additionalProperties: {
+                items: { 
+                    type: 'string'
+                },
+                type: 'array'
+            },
+            type: 'object'
+        },
         customLocale: {
             $ref: '/locale'
         },

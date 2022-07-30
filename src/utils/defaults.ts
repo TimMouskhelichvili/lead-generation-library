@@ -41,6 +41,7 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         config.sendResults : true;
 
     return {
+        answers: config.answers,
         current: 0,
         description: config.description,
         image: config.image,

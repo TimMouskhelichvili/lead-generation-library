@@ -1,4 +1,5 @@
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { IAnswers } from 'src/interfaces/IAnswers';
 import { IResults } from 'src/interfaces/IResults';
 import { MyLocale } from 'src/locale';
 
@@ -27,4 +28,5 @@ export interface IContext {
 	isNextDisabled?: boolean;
 	isLastQuestion?: boolean;
 	error?: string;
+	answers?: IAnswers;
 }

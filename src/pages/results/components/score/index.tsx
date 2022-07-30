@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
+import { useStore } from 'src/context';
 import { IAnswers } from 'src/interfaces/IAnswers';
 import { IResults } from 'src/interfaces/IResults';
-import { useStore } from 'src/context';
-import { ResultsScore, ScoreContainer } from './style';
+import { ScoreAnswers, ScoreContent, ScoreTitle, ScoreContainer } from './style';
 
 /**
  * The Score component.
@@ -10,25 +10,38 @@ import { ResultsScore, ScoreContainer } from './style';
 export const Score = (): ReactElement | null => {
     const results = useStore(c => c.results);
     const answers = useStore(c => c.answers);
+    const locale = useStore(c => c.locale);
 
     if (!answers) {
         return null;
     }
 
+    const length = Object.keys(answers).length;
+    const correct = getCorrectAnswer(results, answers);
+    const score = `${Math.floor(correct / length * 100)}%`;
+
     return (
-        <ScoreContainer>
-            {getScore(results, answers)}
-        </ScoreContainer>
+        <div>
+            <ScoreContainer>
+                <ScoreContent>
+                    <ScoreTitle>
+                        {score}
+                    </ScoreTitle>
+                    <ScoreAnswers>
+                        {locale.resultsAnswers.replace('{0}', `${correct}/${length}`)}
+                    </ScoreAnswers>
+                </ScoreContent>
+            </ScoreContainer>
+        </div>
     );
 };
 
 /**
- * Returns the score.
+ * Returns the correct the answers.
  * @param {IResults} results - The results. 
  * @param {IAnswers} answers - The answers. 
  */
-const getScore = (results: IResults, answers: IAnswers): ReactElement => {
-    const length = Object.keys(answers).length;
+const getCorrectAnswer = (results: IResults, answers: IAnswers): number => {
     let cpt = 0;
 
     for (const i in answers) {
@@ -37,14 +50,5 @@ const getScore = (results: IResults, answers: IAnswers): ReactElement => {
         }
     }
 
-    const score = `${Math.floor(cpt / length * 100)}%`;
-
-    return (
-        <>
-            <ResultsScore>
-                <span>{score}</span>
-            </ResultsScore>
-            <div></div>
-        </>
-    );
+    return cpt;
 };

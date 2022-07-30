@@ -7,6 +7,7 @@ export const NavigationContainer = styled.div`
 `;
 
 export const NavigationButton = styled.button`
+	color:  ${(p): string => p.theme.pages.questions.navigation.color};
 	border-radius: ${(p): string => p.theme.global.radius};
 	background:  ${(p): string => p.theme.pages.questions.navigation.background};
 	border: 1px solid ${(p): string => p.theme.pages.questions.navigation.border};

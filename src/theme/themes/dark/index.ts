@@ -24,20 +24,21 @@ export const darkTheme: MyDefaultTheme = {
     pages: {
         questions: {
             button: {
-                background: '#181e1f',
-                hoveredBackground: darken(.05, '#181e1f')
+                background: darken(.07, defaultColors.background),
+                hoveredBackground: darken(.08, defaultColors.background)
             },
             item: {
                 background: lighten(.01, defaultColors.border),
-                border: darken(.04, defaultColors.border), 
-                hoveredBackground: darken(.05, defaultColors.border),
-                hoveredBorder: darken(.1, defaultColors.border)
+                border: darken(.07, defaultColors.border), 
+                hoveredBackground: lighten(.03, defaultColors.border),
+                hoveredBorder: darken(.08, defaultColors.border) 
             },
             navigation: {
-                background: lighten(.01, defaultColors.border),
-                border: darken(.04, defaultColors.border), 
-                hoveredBackground: darken(.05, defaultColors.border),
-                hoveredBorder: darken(.1, defaultColors.border)
+                background: lighten(.05, defaultColors.border),
+                border: darken(.07, defaultColors.border),
+                color: darken(.06, defaultColors.border),
+                hoveredBackground: lighten(.07, defaultColors.border),
+                hoveredBorder: darken(.09, defaultColors.border)
             }
         }
     }

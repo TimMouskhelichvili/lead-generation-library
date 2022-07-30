@@ -34,7 +34,8 @@ export const lightTheme = {
             },
             navigation: {
                 background: defaultColors.border,
-                border: darken(.04, defaultColors.border), 
+                border: darken(.04, defaultColors.border),
+                color: defaultColors.color,
                 hoveredBackground: darken(.05, defaultColors.border),
                 hoveredBorder: darken(.1, defaultColors.border)
             }

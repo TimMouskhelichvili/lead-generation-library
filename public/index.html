@@ -27,7 +27,7 @@
 	<div id="quiz"></div>
 	<script>
 		const questions = [];
-		for (let i = 0; i < 1; i++) {
+		for (let i = 0; i < 2; i++) {
 			questions.push({
 				description: 'Discover your celeb <strong>persona</strong> — and learn how to uncork your persona.',
 				answers: [
@@ -76,11 +76,11 @@
 			// startQuestions,
 			// randomize: true,
 			pick: 5,
-			// sendResults: false,
+			sendResults: false,
 			customLocale: {
 				start: 'Start Quiz'
 			},
-			showRetry: false,
+			showRetry: true,
 			answers: {
 				q0: [ "a0_2" ],
 				q1: [ "a1_1" ],

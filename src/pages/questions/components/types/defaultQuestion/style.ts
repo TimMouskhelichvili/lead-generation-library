@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DefaultAnswer = styled.button<{ current: boolean; }>`
+	color: ${(p): string => p.theme.colors.color};
 	border-radius: ${(p): string => p.theme.global.radius};
 	background: ${(p): string => p.theme.pages.questions.item.background};
 	border: 1px solid ${(p): string => p.theme.pages.questions.item.border};

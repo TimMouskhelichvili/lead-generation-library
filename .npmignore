@@ -1,0 +1,6 @@
+.vscode/
+coverage/
+junit/
+public/
+src/
+webpack.config.js

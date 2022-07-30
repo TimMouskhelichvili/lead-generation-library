@@ -8,7 +8,8 @@
     "build": "cross-env LIB_VERSION=$npm_package_version NODE_ENV=production webpack --mode production",
     "verify:typescript": "tsc --noEmit",
     "verify:eslint": "eslint src --ext .tsx --ext .ts",
-    "verify": "npm run verify:typescript && npm run verify:eslint"
+    "verify": "npm run verify:typescript && npm run verify:eslint",
+    "publish": "npm run build && clean-publish --access public"
   },
   "author": "Tim Mouskhelichvili",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.25",
+    "clean-publish": "^4.0.1",
     "html-webpack-plugin": "^5.5.0",
     "terser-webpack-plugin": "^5.3.3",
     "ts-loader": "^9.3.1",

@@ -48,6 +48,7 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         question: questions[0],
         questions,
         results: {},
+        resultsDescription: config.resultsDescription,
         sendResults: config.sendResults ?? true,
         showRetry: config.showRetry,
         status: Status.NotStarted,

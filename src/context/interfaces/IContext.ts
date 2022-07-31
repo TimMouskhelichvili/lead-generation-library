@@ -17,6 +17,7 @@ export interface IContext {
 	description?: string;
 	image?: string;
 	result?: string[];
+	resultsDescription?: string;
 
 	config: IConfiguration;
 	status: Status;

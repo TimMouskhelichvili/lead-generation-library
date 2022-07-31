@@ -46,6 +46,9 @@ export const configurationSchema: Schema = {
         randomize: {
             type: 'boolean'
         },
+        resultsDescription: {
+            type: 'string'
+        },
         sendResults: {
             type: 'boolean'
         },

@@ -1,12 +1,13 @@
 import React, { ReactElement } from 'react';
 import { Score } from 'src/pages/results/components/score';
 import { useDispatch, useStore } from 'src/context';
-import { ResultsContainer, ResultsTitle, ResultsButton } from './style';
+import { ResultsContainer, ResultsTitle, ResultsButton, ResultsDescription } from './style';
 
 /**
  * The Results component.
  */
 export const Results = (): ReactElement => {
+    const resultsDescription = useStore(c => c.resultsDescription);
     const showRetry = useStore(c => c.showRetry);
     const answers = useStore(c => c.answers);
     const locale = useStore(c => c.locale);
@@ -24,6 +25,8 @@ export const Results = (): ReactElement => {
         <ResultsContainer>
             <ResultsTitle>{title}</ResultsTitle>
             <Score />
+            {resultsDescription && 
+				<ResultsDescription dangerouslySetInnerHTML={{ __html: resultsDescription }} />}
             {showRetry && <ResultsButton type='button' onClick={handleRetry}>
                 {locale.retry}
             </ResultsButton>}

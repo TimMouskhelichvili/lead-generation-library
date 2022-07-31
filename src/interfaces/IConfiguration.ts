@@ -9,6 +9,7 @@ export interface IConfiguration {
 	endQuestions?: IQuestion[];
 	startQuestions?: IQuestion[];
 	description?: string;
+	resultsDescription?: string;
 	image?: string;
 	randomize?: boolean;
 	pick?: number;

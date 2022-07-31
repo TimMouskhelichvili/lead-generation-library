@@ -4,7 +4,7 @@ export const ScoreContainer = styled.div`
 	border-radius: ${(p): string => p.theme.global.radius};
 	background: ${(p): string => p.theme.colors.border};
 	display: inline-block;
-	margin: 20px 0px;
+	margin-top: 20px;
 `;
 
 export const ScoreContent = styled.div`

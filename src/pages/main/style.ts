@@ -17,7 +17,9 @@ export const MainH1 = styled.h1`
 
 export const MainDescription = styled.div`
 	width: 80%;
-	margin: 20px auto;
+	margin: 0px auto;
+	margin-top: 20px;
+
 	font-size: 1em;
     line-height: 26px;
 
@@ -51,6 +53,7 @@ export const MainButton = styled.button`
 	border: 0px;
 	background: ${(p): string => p.theme.colors.primary};
 	padding: 15px 30px;
+	margin-top: 20px;
 	color: white;
 	border-radius: ${(p): string => p.theme.global.radius};
 	font-size: 1.3em;

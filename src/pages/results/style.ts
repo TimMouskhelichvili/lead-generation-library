@@ -16,6 +16,7 @@ export const ResultsTitle = styled.h1`
 `;
 
 export const ResultsButton = styled.button`
+	margin-top: 20px;
 	border: 0px;
 	background: ${(p): string => p.theme.colors.primary};
 	padding: 15px 30px;
@@ -33,7 +34,7 @@ export const ResultsButton = styled.button`
 export const ResultsDescription = styled.div`
 	width: 80%;
 	margin: 0px auto;
-	margin-bottom: 20px;
+	margin-top: 20px;
 	font-size: 1em;
     line-height: 26px;
 

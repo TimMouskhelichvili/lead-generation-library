@@ -11,6 +11,7 @@ export const enLocale = {
     selectAnswersFromTo: '(please select from {0} to {1} answers)',
     selectAnswersUpTo: '(please select up to {0} answers)',
     selectOneAnswer: '(please select one answer)',
+    showAnswers: 'Show answers',
     start: 'Start Quiz',
     submit: 'Submit',
     submitting: 'submitting...'

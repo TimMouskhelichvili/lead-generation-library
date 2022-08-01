@@ -1,5 +1,5 @@
-import { Status } from 'src/context/interfaces/IContext';
 import { Reducer } from 'src/context/types/reducer';
+import { Status } from 'src/context/enums/status';
 import { sendResults } from 'src/apis';
 
 export type ApiAction = 'SEND';
@@ -14,13 +14,13 @@ export const apiReducer: Reducer<ApiAction> = {
 
         api.setState({ error: '' });
 	
-        if (!state.sendResults) {
+        if (!state.results.sendResults) {
             api.setState({ status: Status.Completed });
             return;
         }
 
         try {
-            await sendResults(state.results);
+            await sendResults(state.results.items);
         } catch {
             error = true;
         }

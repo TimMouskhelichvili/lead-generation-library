@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { Navigation } from 'src/pages/questions/components/navigation';
-import { Status } from 'src/context/interfaces/IContext';
 import { useDispatch, useStore } from 'src/context';
+import { Status } from 'src/context/enums/status';
 import { Icon } from 'src/components/icon';
 import { 
     ContainerTitle, 

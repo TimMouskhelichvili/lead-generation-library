@@ -13,6 +13,7 @@ export const frLocale: MyLocale = {
     selectAnswersFromTo: '(sélectionner de {0} à {1} réponses)',
     selectAnswersUpTo: '(sélectionner jusqu\'à {0} réponses)',
     selectOneAnswer: '(sélectionner une réponse)',
+    showAnswers: 'Voir les réponses',
     start: 'Commencer Quiz',
     submit: 'Soumetter',
     submitting: 'soumission...'

@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
-import { Status } from 'src/context/interfaces/IContext';
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { Status } from 'src/context/enums/status';
 import { IAnswer } from 'src/interfaces/IAnswer';
 import { useStore } from 'src/context';
 import { DefaultAnswer, DefaultImg, DefaultDescription } from './style';

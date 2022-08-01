@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
-import { Status } from 'src/context/interfaces/IContext';
 import { useContextUpdates } from 'src/context/updates';
+import { Status } from 'src/context/enums/status';
 import { Questions } from 'src/pages/questions';
 import { Results } from 'src/pages/results';
+import { Answers } from 'src/pages/answers';
 import { useStore } from 'src/context';
 import { Main } from 'src/pages/main';
 import { QuizContainer, QuizRow } from './style';
@@ -20,6 +21,8 @@ export const Quiz = (): ReactElement => {
             return <Questions />;
         } else if (status === Status.Completed) {
             return <Results />;
+        } else if (status === Status.ViewingAnswers) {
+            return <Answers />;
         }
 
         return <Main />;

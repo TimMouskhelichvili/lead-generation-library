@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useStore } from 'src/context';
-import { Status } from '../interfaces/IContext';
+import { Status } from 'src/context/enums/status';
 
 /**
  * Adds context updates.

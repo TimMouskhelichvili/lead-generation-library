@@ -1,13 +1,15 @@
 import { Validator } from 'jsonschema';
 import { ValidationResultError } from 'src/errors/validationResultError';
-import { IContext, Status } from 'src/context/interfaces/IContext';
 import { configurationSchema } from 'src/schemas/configuration';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
+import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultLocale, MyLocale } from 'src/locale';
 import { questionSchema } from 'src/schemas/question';
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { resultsSchema } from 'src/schemas/results';
 import { answerSchema } from 'src/schemas/answer';
 import { localeSchema } from 'src/schemas/locale';
+import { Status } from 'src/context/enums/status';
 
 /**
  * Validates the configuration.
@@ -19,6 +21,7 @@ export const validateConfig = (config: IConfiguration): void => {
     validator.addSchema(answerSchema);
     validator.addSchema(questionSchema);
     validator.addSchema(localeSchema);
+    validator.addSchema(resultsSchema);
 	
     try {
         validator.validate(config, configurationSchema, {
@@ -47,10 +50,13 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         locale: getLocale(config),
         question: questions[0],
         questions,
-        results: {},
-        resultsDescription: config.resultsDescription,
-        sendResults: config.sendResults ?? true,
-        showRetry: config.showRetry,
+        results: {
+            description: config.results?.description,
+            items: {},
+            sendResults: config.results?.sendResults ?? true,
+            showAnswers: config.results?.showAnswers,
+            showRetry: config.results?.showRetry
+        },
         status: Status.NotStarted,
         title: config.title
     };

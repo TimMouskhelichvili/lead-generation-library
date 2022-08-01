@@ -1,6 +1,7 @@
 import { StoreApi } from 'zustand';
-import { IContext, Status } from 'src/context/interfaces/IContext';
+import { IContext } from 'src/context/interfaces/IContext';
 import { Reducer } from 'src/context/types/reducer';
+import { Status } from 'src/context/enums/status';
 
 export type QuizAction = 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE';
 
@@ -25,7 +26,10 @@ export const quizReducer: Reducer<QuizAction> = {
             current: getNext(api),
             results: {
                 ...state.results,
-                [state.questions[state.current].id]: value 
+                items: {
+                    ...state.results.items,
+                    [state.questions[state.current].id]: value 
+                }
             }
         });
     },
@@ -71,5 +75,5 @@ const getResult = (api: StoreApi<IContext>, index: number): string[] | undefined
 
     const id = state.questions[index]?.id;
 
-    return state.results[id];
+    return state.results.items[id];
 };

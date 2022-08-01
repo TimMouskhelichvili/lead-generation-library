@@ -2,14 +2,8 @@ import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { IAnswers } from 'src/interfaces/IAnswers';
 import { IResults } from 'src/interfaces/IResults';
+import { Status } from 'src/context/enums/status';
 import { MyLocale } from 'src/locale';
-
-export enum Status {
-	NotStarted,
-	Active, 
-	Completed,
-	Submitting
-}
 
 export interface IContext {	
 	title: string;
@@ -17,20 +11,25 @@ export interface IContext {
 	description?: string;
 	image?: string;
 	result?: string[];
-	resultsDescription?: string;
 
 	config: IConfiguration;
 	status: Status;
 	question: IQuestion;
 	locale: MyLocale;
 	current: number;
-	results: IResults;
-	sendResults: boolean;
+	results: IContextResults;
 
 	isPreviousDisabled?: boolean;
 	isNextDisabled?: boolean;
 	isLastQuestion?: boolean;
 	error?: string;
 	answers?: IAnswers;
+}
+
+export interface IContextResults {
+	items: IResults;
+	sendResults: boolean;
 	showRetry?: boolean;
+	showAnswers?: boolean;
+	description?: string;
 }

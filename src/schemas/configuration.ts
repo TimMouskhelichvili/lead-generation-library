@@ -46,14 +46,9 @@ export const configurationSchema: Schema = {
         randomize: {
             type: 'boolean'
         },
-        resultsDescription: {
-            type: 'string'
-        },
-        sendResults: {
-            type: 'boolean'
-        },
-        showRetry: {
-            type: 'boolean'
+        results: {
+            $ref: '/results',
+            type: 'object'
         },
         startQuestions: {
             items: { 

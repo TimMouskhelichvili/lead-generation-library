@@ -2,6 +2,7 @@ import { MyLocale } from 'src/locale';
 
 export const frLocale: MyLocale = {
     answersTitle: 'Voici les réponses:',
+    correctAnswer: '[Réponse Valide]',
     errorSubmitting: 'Une erreur s\'est produite, veuillez réessayer...',
     invalidEmail: 'Veuillez entrer une adresse e-mail valide.',
     invalidField: 'Veuillez entrer une valeur valide.',

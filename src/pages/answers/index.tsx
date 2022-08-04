@@ -1,18 +1,7 @@
 import React, { ReactElement } from 'react';
-import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { IQuestion } from 'src/interfaces/IQuestion';
-import { Icon } from 'src/components/icon';
+import { Answer } from 'src/pages/answers/components/answer';
 import { useStore } from 'src/context';
-import { 
-    AnswersContainer, 
-    AnswersResultsContainer, 
-    AnswersTitle, 
-    AnswerResult, 
-    AnswerSpan, 
-    AnswerResultContainer, 
-    AnswerResultTitle 
-} from './style';
+import { AnswersContainer, AnswersResultsContainer, AnswersTitle } from './style';
 
 /**
  * The answers component.
@@ -29,8 +18,12 @@ export const Answers = (): ReactElement | null => {
 
     const list: ReactElement[] = [];
     questions.forEach(question => {
-        const answer = getAnswer(question, answers[question.id], items[question.id]);
-        list.push(answer);
+        list.push(
+            <Answer 
+                question={question} 
+                answers={answers[question.id]} 
+                results={items[question.id]} />
+        );
     });
 
     return (
@@ -42,47 +35,5 @@ export const Answers = (): ReactElement | null => {
                 {list}
             </AnswersResultsContainer>
         </AnswersContainer>
-    );
-};
-
-export type AnswerState = 'error' | 'success' | 'correct';
-
-/**
- * Returns the answer element.
- * @param {IQuestion} question - The question.
- * @param {string[]} answers - The answers.
- * @param {string[]} results - The results.
- */
-const getAnswer = (question: IQuestion, answers: string[], results: string[]): ReactElement => {
-    return (
-        <div>
-            <AnswerResultTitle>{question.title}</AnswerResultTitle>
-            <AnswerResultContainer key={question.id}>
-                {question.answers?.map(answer => {
-                    const correct = answers.includes(answer.id);
-                    let state: AnswerState | null = null;
-                    let icon = null;
-
-                    if (results.includes(answer.id)) {
-                        state = correct ? 'success' : 'error';
-                        icon = (
-                            <AnswerSpan>
-                                <Icon icon={correct ? faCheck : faTimes} />
-                            </AnswerSpan>
-                        );
-                    } else if (correct) {
-                        state = 'correct';
-                        icon = <AnswerSpan>[Correct Answer]</AnswerSpan>;
-                    }
-
-                    return (
-                        <AnswerResult key={answer.id} state={state}>
-                            {icon}
-                            {answer.answer}
-                        </AnswerResult>
-                    );
-                })}
-            </AnswerResultContainer>	
-        </div>
     );
 };

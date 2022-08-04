@@ -1,5 +1,6 @@
 export const enLocale = {
     answersTitle: 'Here are the answers:',
+    correctAnswer: '[Correct Answer]',
     errorSubmitting: 'An error happened, please retry...',
     invalidEmail: 'Please enter a valid email.',
     invalidField: 'Please enter a valid value.',

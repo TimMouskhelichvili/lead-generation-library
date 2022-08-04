@@ -19,6 +19,9 @@ export const Score = (): ReactElement | null => {
     const correct = getCorrectCount(items, answers);
     const score = `${Math.floor(correct / length * 100)}%`;
 
+    const title = length > 1 ? 
+        locale.resultsAnswers : locale.resultsAnswer;
+
     return (
         <div>
             <ScoreContainer>
@@ -27,7 +30,7 @@ export const Score = (): ReactElement | null => {
                         {score}
                     </ScoreTitle>
                     <ScoreAnswers>
-                        {locale.resultsAnswers.replace('{0}', `${correct}/${length}`)}
+                        {title.replace('{0}', `${correct}/${length}`)}
                     </ScoreAnswers>
                 </ScoreContent>
             </ScoreContainer>

@@ -19,3 +19,12 @@ export const AnswersTitle = styled.h1`
 export const AnswersResultsContainer = styled.div`
 	margin-top: 20px;
 `;
+
+export const AnswersGoBack = styled.div`
+	margin-top: 20px;
+
+	span {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+`;

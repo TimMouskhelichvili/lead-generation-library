@@ -3,7 +3,15 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { useStore } from 'src/context';
-import { AnswersContainer, AnswersResultsContainer, AnswersTitle, AnswerResult, AnswerIcon, AnswerResultContainer } from './style';
+import { 
+    AnswersContainer, 
+    AnswersResultsContainer, 
+    AnswersTitle, 
+    AnswerResult, 
+    AnswerIcon, 
+    AnswerResultContainer, 
+    AnswerResultTitle 
+} from './style';
 
 /**
  * The answers component.
@@ -51,9 +59,9 @@ export type AnswerState = 'error' | 'success';
  */
 const getAnswer = (question: IQuestion, answers: string[], results: string[]): ReactElement => {
     return (
-        <AnswerResultContainer key={question.id}>
-            {question.title}
-            <div>
+        <div>
+            <AnswerResultTitle>{question.title}</AnswerResultTitle>
+            <AnswerResultContainer key={question.id}>
                 {question.answers?.map(answer => {
                     const correct = answers.includes(answer.id);
                     let state: AnswerState | null = null;
@@ -63,7 +71,7 @@ const getAnswer = (question: IQuestion, answers: string[], results: string[]): R
                         state = correct ? 'success' : 'error';
                         icon = <AnswerIcon icon={correct ? faCheck : faTimes} />;
                     } else if (correct) {
-                        state = 'success';
+                        icon = <>[Correct Answer]</>;
                     }
 
                     return (
@@ -73,7 +81,7 @@ const getAnswer = (question: IQuestion, answers: string[], results: string[]): R
                         </AnswerResult>
                     );
                 })}
-            </div>
-        </AnswerResultContainer>	
+            </AnswerResultContainer>	
+        </div>
     );
 };

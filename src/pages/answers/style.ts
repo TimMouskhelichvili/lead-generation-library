@@ -19,7 +19,7 @@ export const AnswersTitle = styled.h1`
 `;
 
 export const AnswersResultsContainer = styled.div`
-
+	margin-top: 20px;
 `;
 
 export const AnswerResultContainer = styled.div`
@@ -35,6 +35,8 @@ export const AnswerResultContainer = styled.div`
 `;
 
 export const AnswerResult = styled.div<{ state: AnswerState | null }>`
+	margin-bottom: 5px;
+
 	${(p): string => {
         if (p.state === 'error') {
             return `color: ${p.theme.colors.error}`;
@@ -50,4 +52,9 @@ export const AnswerResult = styled.div<{ state: AnswerState | null }>`
 
 export const AnswerIcon = styled(Icon)`
 	margin-right: 5px;
+`;
+
+export const AnswerResultTitle = styled.div`
+	margin-bottom: 5px;
+	margin-top: 10px;
 `;

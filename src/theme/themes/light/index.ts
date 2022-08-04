@@ -9,7 +9,8 @@ const defaultColors = {
     color: '#181e1f',
     error: 'red',
     primary: '#BD4B4B',
-    primaryDarken: darken(.05, '#BD4B4B')
+    primaryDarken: darken(.05, '#BD4B4B'),
+    success: 'green'
 };
 
 /**

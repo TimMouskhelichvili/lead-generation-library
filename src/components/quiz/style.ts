@@ -9,6 +9,10 @@ export const QuizContainer = styled.div`
 	letter-spacing: 0px;
 	color: ${(p): string => p.theme.colors.color};
 	background: ${(p): string => p.theme.colors.background};
+
+	* {
+		box-sizing: border-box;
+	}
 `;
 
 export const QuizRow = styled.div`

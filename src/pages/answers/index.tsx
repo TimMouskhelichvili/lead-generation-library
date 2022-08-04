@@ -2,13 +2,14 @@ import React, { ReactElement } from 'react';
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { Icon } from 'src/components/icon';
 import { useStore } from 'src/context';
 import { 
     AnswersContainer, 
     AnswersResultsContainer, 
     AnswersTitle, 
     AnswerResult, 
-    AnswerIcon, 
+    AnswerSpan, 
     AnswerResultContainer, 
     AnswerResultTitle 
 } from './style';
@@ -28,13 +29,8 @@ export const Answers = (): ReactElement | null => {
 
     const list: ReactElement[] = [];
     questions.forEach(question => {
-        if (!answers[question.id]) {
-            return;
-        }
-
-        list.push(
-            getAnswer(question, answers[question.id], items[question.id])
-        );
+        const answer = getAnswer(question, answers[question.id], items[question.id]);
+        list.push(answer);
     });
 
     return (
@@ -49,7 +45,7 @@ export const Answers = (): ReactElement | null => {
     );
 };
 
-export type AnswerState = 'error' | 'success';
+export type AnswerState = 'error' | 'success' | 'correct';
 
 /**
  * Returns the answer element.
@@ -69,9 +65,14 @@ const getAnswer = (question: IQuestion, answers: string[], results: string[]): R
 
                     if (results.includes(answer.id)) {
                         state = correct ? 'success' : 'error';
-                        icon = <AnswerIcon icon={correct ? faCheck : faTimes} />;
+                        icon = (
+                            <AnswerSpan>
+                                <Icon icon={correct ? faCheck : faTimes} />
+                            </AnswerSpan>
+                        );
                     } else if (correct) {
-                        icon = <>[Correct Answer]</>;
+                        state = 'correct';
+                        icon = <AnswerSpan>[Correct Answer]</AnswerSpan>;
                     }
 
                     return (

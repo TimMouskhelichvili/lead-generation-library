@@ -35,7 +35,9 @@ export const AnswerResultContainer = styled.div`
 `;
 
 export const AnswerResult = styled.div<{ state: AnswerState | null }>`
-	margin-bottom: 5px;
+	&:not(:last-of-type) {
+		margin-bottom: 7px;
+	}
 
 	${(p): string => {
         if (p.state === 'error') {
@@ -46,12 +48,17 @@ export const AnswerResult = styled.div<{ state: AnswerState | null }>`
             return `color: ${p.theme.colors.success}`;
         }
 
+        if (p.state === 'correct') {
+            return 'font-weight: bold';
+        }
+
         return '';
     }}
 `;
 
-export const AnswerIcon = styled(Icon)`
+export const AnswerSpan = styled.span`
 	margin-right: 5px;
+	display: inline-block;
 `;
 
 export const AnswerResultTitle = styled.div`

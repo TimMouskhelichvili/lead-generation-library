@@ -1,13 +1,14 @@
 import React, { ReactElement } from 'react';
+import { ShowAnswers } from 'src/pages/results/components/showAnswers';
 import { Score } from 'src/pages/results/components/score';
 import { useDispatch, useStore } from 'src/context';
-import { ResultsContainer, ResultsTitle, ResultsButton, ResultsDescription, ResultsShowAnswers } from './style';
+import { ResultsContainer, ResultsTitle, ResultsButton, ResultsDescription } from './style';
 
 /**
  * The Results component.
  */
 export const Results = (): ReactElement => {
-    const { description, showRetry, showAnswers } = useStore(c => c.results);
+    const { description, showRetry } = useStore(c => c.results);
     const answers = useStore(c => c.answers);
     const locale = useStore(c => c.locale);
 
@@ -20,20 +21,13 @@ export const Results = (): ReactElement => {
         dispatch({ type: 'RETRY' });
     };
 
-    const handleAnswers = (): void => {
-        dispatch({ type: 'SHOW_ANSWERS' });
-    };
-
     return (
         <ResultsContainer>
             <ResultsTitle>{title}</ResultsTitle>
             <Score />
             {description && 
 				<ResultsDescription dangerouslySetInnerHTML={{ __html: description }} />}
-            {showAnswers && 
-				<ResultsShowAnswers onClick={handleAnswers}>
-				    {locale.showAnswers}
-				</ResultsShowAnswers>}
+            <ShowAnswers />
             {showRetry && <ResultsButton type='button' onClick={handleRetry}>
                 {locale.retry}
             </ResultsButton>}

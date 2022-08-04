@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import { IAnswers } from 'src/interfaces/IAnswers';
-import { IResults } from 'src/interfaces/IResults';
+import { getCorrectCount } from 'src/pages/results/utils';
 import { useStore } from 'src/context';
 import { ScoreAnswers, ScoreContent, ScoreTitle, ScoreContainer } from './style';
 
@@ -34,21 +33,4 @@ export const Score = (): ReactElement | null => {
             </ScoreContainer>
         </div>
     );
-};
-
-/**
- * Returns the correct answers count.
- * @param {IResults} results - The results. 
- * @param {IAnswers} answers - The answers. 
- */
-const getCorrectCount = (results: IResults, answers: IAnswers): number => {
-    let cpt = 0;
-
-    for (const i in answers) {
-        if (JSON.stringify(results[i]) === JSON.stringify(answers[i])) {
-            cpt++;
-        }
-    }
-
-    return cpt;
 };

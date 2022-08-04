@@ -43,9 +43,3 @@ export const ResultsDescription = styled.div`
 		padding: 0px .5em;
 	}
 `;
-
-export const ResultsShowAnswers = styled.div`
-	text-decoration: underline;
-	margin-top: 20px;
-	cursor: pointer;
-`;

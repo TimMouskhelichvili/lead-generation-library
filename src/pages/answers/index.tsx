@@ -24,7 +24,11 @@ export const Answers = (): ReactElement | null => {
     const list: ReactElement[] = [];
     questions.forEach(question => {
         list.push(
-            <Answer question={question} answers={answers[question.id]} results={items[question.id]} />
+            <Answer
+                key={question.id} 
+                question={question} 
+                answers={answers[question.id]} 
+                results={items[question.id]} />
         );
     });
 

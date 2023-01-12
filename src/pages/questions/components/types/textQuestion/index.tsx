@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Container } from 'src/pages/questions/components/container';
-import { IQuestion, ValidateType } from 'src/interfaces/IQuestion';
+import { IQuestion } from 'src/interfaces/IQuestion';
 import { useStore } from 'src/context';
 import { ErrorField, Input } from './style';
 import { validate } from 'jsonschema';
@@ -87,7 +87,7 @@ const useError = (question: IQuestion, value: string): [ boolean, string | null,
 const useVerify = (question: IQuestion, value: string): string | null => {
     const locale = useStore(c => c.locale);
 
-    if (question.validate === ValidateType.email) {
+    if (question.validate === 'email') {
         const res = validate(value, { format: 'email', type: 'string' });
         if (res.errors.length) {
             return locale.invalidEmail;

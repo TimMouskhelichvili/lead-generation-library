@@ -14,7 +14,7 @@ export const getCorrectCount = (results: IResults, answers: IAnswers): number =>
 
         for (const answer of answers[i]) {
             // eslint-disable-next-line max-depth
-            if (results[i].includes(answer)) {
+            if (results[i]?.includes(answer)) {
                 correctAnswers++;
             }
         }

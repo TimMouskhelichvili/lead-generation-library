@@ -2,7 +2,7 @@ import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { IAnswers } from 'src/interfaces/IAnswers';
 import { IResults } from 'src/interfaces/IResults';
-import { Status } from 'src/context/enums/status';
+import { Status } from 'src/types/enums';
 import { MyLocale } from 'src/locale';
 
 export interface IContext {	

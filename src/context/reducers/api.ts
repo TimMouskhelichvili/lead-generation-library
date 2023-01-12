@@ -1,5 +1,4 @@
 import { Reducer } from 'src/context/types/reducer';
-import { Status } from 'src/context/enums/status';
 import { sendResults } from 'src/apis';
 
 export type ApiAction = 'SEND';
@@ -15,7 +14,7 @@ export const apiReducer: Reducer<ApiAction> = {
         api.setState({ error: '' });
 	
         if (!state.results.sendResults) {
-            api.setState({ status: Status.Completed });
+            api.setState({ status: 'COMPLETED' });
             return;
         }
 
@@ -27,7 +26,7 @@ export const apiReducer: Reducer<ApiAction> = {
 	
         api.setState({
             error: error ? state.locale.errorSubmitting : '',
-            status: error ? Status.Active : Status.Completed
+            status: error ? 'ACTIVE' : 'COMPLETED'
         });
     }
 };

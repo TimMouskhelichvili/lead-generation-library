@@ -10,7 +10,6 @@ import { IQuestion } from 'src/interfaces/IQuestion';
 import { resultsSchema } from 'src/schemas/results';
 import { answerSchema } from 'src/schemas/answer';
 import { localeSchema } from 'src/schemas/locale';
-import { Status } from 'src/context/enums/status';
 import { IAnswer } from 'src/interfaces/IAnswer';
 import { shuffle } from 'src/utils/helpers';
 
@@ -61,7 +60,7 @@ export const getDefaultState = (config: IConfiguration): IContext => {
             showAnswers: config.results?.showAnswers,
             showRetry: config.results?.showRetry
         },
-        status: Status.NotStarted,
+        status: 'NOT_STARTED',
         title: config.title
     };
 };

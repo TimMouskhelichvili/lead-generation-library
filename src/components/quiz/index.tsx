@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import { useContextUpdates } from 'src/context/updates';
-import { Status } from 'src/context/enums/status';
 import { Questions } from 'src/pages/questions';
 import { Results } from 'src/pages/results';
 import { Answers } from 'src/pages/answers';
@@ -17,11 +16,11 @@ export const Quiz = (): ReactElement => {
     useContextUpdates();
 
     const getElementByStatus = (): ReactElement => {
-        if ([ Status.Active, Status.Submitting ].includes(status)) {
+        if (status === 'ACTIVE' || status === 'SUBMITTING') {
             return <Questions />;
-        } else if (status === Status.Completed) {
+        } else if (status === 'COMPLETED') {
             return <Results />;
-        } else if (status === Status.ViewingAnswers) {
+        } else if (status === 'VIEWING_ANSWERS') {
             return <Answers />;
         }
 

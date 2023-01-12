@@ -1,6 +1,5 @@
 import { getDefaultState } from 'src/utils/defaults';
 import { Reducer } from 'src/context/types/reducer';
-import { Status } from 'src/context/enums/status';
 
 export type CoreAction = 'START_QUIZ' | 'RETRY' | 'SHOW_ANSWERS' | 'GO_BACK_TO_ANSWERS';
 
@@ -10,7 +9,7 @@ export type CoreAction = 'START_QUIZ' | 'RETRY' | 'SHOW_ANSWERS' | 'GO_BACK_TO_A
 export const coreReducer: Reducer<CoreAction> = {
     'GO_BACK_TO_ANSWERS': (api) => {
         api.setState({
-            status: Status.Completed
+            status: 'COMPLETED'
         });
     },
     'RETRY': (api) => {
@@ -22,12 +21,12 @@ export const coreReducer: Reducer<CoreAction> = {
     },
     'SHOW_ANSWERS': (api) => {
         api.setState({
-            status: Status.ViewingAnswers
+            status: 'VIEWING_ANSWERS'
         });
     },
     'START_QUIZ': (api) => {
         api.setState({
-            status: Status.Active
+            status: 'ACTIVE'
         });
     }
 };

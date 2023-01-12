@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useStore } from 'src/context';
-import { Status } from 'src/context/enums/status';
 
 /**
  * Adds context updates.
@@ -13,11 +12,11 @@ export const useContextUpdates = (): void => {
 
     useEffect(() => {
         dispatch({ type: 'UPDATE' });
-    }, [ current, results ]);
+    }, [ current, results, dispatch ]);
 
     useEffect(() => {
-        if (status === Status.Submitting) {
+        if (status === 'SUBMITTING') {
             dispatch({ type: 'SEND' });
         }
-    }, [ status ]);
+    }, [ status, dispatch ]);
 };

@@ -1,7 +1,6 @@
 import { StoreApi } from 'zustand';
 import { IContext } from 'src/context/interfaces/IContext';
 import { Reducer } from 'src/context/types/reducer';
-import { Status } from 'src/context/enums/status';
 
 export type QuizAction = 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE';
 
@@ -38,7 +37,7 @@ export const quizReducer: Reducer<QuizAction> = {
         const isLastQuestion = state.current === state.questions.length - 1;
         const result = getResult(api, state.current);
         const isSubmitting = result && isLastQuestion;
-        const status = isSubmitting ? Status.Submitting : state.status;
+        const status = isSubmitting ? 'SUBMITTING' : state.status;
 
         api.setState({
             isLastQuestion,

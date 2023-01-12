@@ -1,5 +1,5 @@
 import { Schema } from 'jsonschema';
-import { QuestionType, ValidateType } from 'src/interfaces/IQuestion';
+import { QuestionTypeArray, ValidateTypeArray } from 'src/types/enums';
 
 export const questionSchema: Schema = {
     additionalProperties: false,
@@ -47,11 +47,11 @@ export const questionSchema: Schema = {
             type: 'string'
         },
         type: {
-            enum: Object.keys(QuestionType),
+            enum: QuestionTypeArray as unknown as string[],
             type: 'string'
         },
         validate: {
-            enum: Object.keys(ValidateType),
+            enum: ValidateTypeArray as unknown as string[],
             type: 'string'
         }
     },

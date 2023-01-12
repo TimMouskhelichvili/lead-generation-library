@@ -7,6 +7,7 @@ import { ScoreAnswers, ScoreContent, ScoreTitle, ScoreContainer } from './style'
  * The Score component.
  */
 export const Score = (): ReactElement | null => {
+    const questions = useStore(c => c.questions);
     const { items } = useStore(c => c.results);
     const answers = useStore(c => c.answers);
     const locale = useStore(c => c.locale);
@@ -15,7 +16,7 @@ export const Score = (): ReactElement | null => {
         return null;
     }
 
-    const length = Object.keys(answers).length;
+    const length = questions.filter(x => x.type !== 'text').length;
     const correct = getCorrectCount(items, answers);
     const score = `${Math.floor(correct / length * 100)}%`;
 

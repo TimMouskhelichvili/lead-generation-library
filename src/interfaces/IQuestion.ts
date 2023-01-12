@@ -1,12 +1,5 @@
+import { QuestionType, ValidateType } from 'src/types/enums';
 import { IAnswer } from 'src/interfaces/IAnswer';
-
-export enum QuestionType {
-	text = 'text'
-}
-
-export enum ValidateType {
-	email = 'email'
-}
 
 export interface IQuestion {
 	

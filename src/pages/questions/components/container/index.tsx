@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { Navigation } from 'src/pages/questions/components/navigation';
 import { useDispatch, useStore } from 'src/context';
-import { Status } from 'src/context/enums/status';
 import { Icon } from 'src/components/icon';
 import { 
     ContainerTitle, 
@@ -70,7 +69,7 @@ const useButton = (props: IProps): ReactElement => {
     const status = useStore(c => c.status);
     const isLastQuestion = useStore(c => c.isLastQuestion);
     const locale = useStore(c => c.locale);
-    const isSubmitting = status === Status.Submitting;
+    const isSubmitting = status === 'SUBMITTING';
 
     const getButtonText = (): ReactElement => {
         const text = isLastQuestion ? locale.submit : locale.ok;

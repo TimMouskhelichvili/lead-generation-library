@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Answer } from 'src/pages/answers/components/answer';
+import { getUserQuestions } from 'src/utils/questions';
 import { useDispatch, useStore } from 'src/context';
 import { AnswersContainer, AnswersGoBack, AnswersResultsContainer, AnswersTitle } from './style';
 
@@ -22,7 +23,7 @@ export const Answers = (): ReactElement | null => {
     };
 
     const list: ReactElement[] = [];
-    questions.forEach(question => {
+    getUserQuestions(questions).forEach(question => {
         list.push(
             <Answer
                 key={question.id} 

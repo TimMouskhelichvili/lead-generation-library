@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { getCorrectCount } from 'src/pages/results/utils';
+import { getUserQuestions } from 'src/utils/questions';
 import { useStore } from 'src/context';
 import { ScoreAnswers, ScoreContent, ScoreTitle, ScoreContainer } from './style';
 
@@ -16,7 +17,7 @@ export const Score = (): ReactElement | null => {
         return null;
     }
 
-    const length = questions.filter(x => x.type !== 'text').length;
+    const length = getUserQuestions(questions).length;
     const correct = getCorrectCount(items, answers);
     const score = `${Math.floor(correct / length * 100)}%`;
 

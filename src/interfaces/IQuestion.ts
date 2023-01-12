@@ -34,6 +34,11 @@ export interface IQuestion {
 	hideNavigation?: boolean;
 
 	/**
+	 * Hides this questions from the total & answers screen.
+	 */
+	hideFromResults?: boolean;
+
+	/**
 	 * Validates the field.
 	 */
 	validate?: ValidateType;

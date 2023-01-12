@@ -28,6 +28,9 @@ export const questionSchema: Schema = {
         description: {
             type: 'string'
         },
+        hideFromResults: {
+            type: 'boolean'
+        },
         hideNavigation: {
             type: 'boolean'
         },

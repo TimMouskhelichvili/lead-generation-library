@@ -69,6 +69,6 @@ export interface IQuestion {
 	 * Adds something before the title.
 	 * {0} => corresponds to the answer index.
 	 */
-	pre?: string;
+	before?: string;
 
 }

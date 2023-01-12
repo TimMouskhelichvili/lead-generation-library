@@ -29,35 +29,33 @@
 		const questions = [];
 		for (let i = 0; i < 4; i++) {
 			questions.push({
-				description: 'Discover your celeb <strong>persona</strong> — and learn how to uncork your persona.',
+				//description: 'What is an <strong>interface</string>?',
 				answers: [
 					{
-						image: 'https://s3-us-west-1.amazonaws.com/tryinteract-uploads/5c0f606f5f0f8d0013312fbe/_1282c3d0-2af3-11e9-aa6b-1b5e183061e0.jpg',
-						answer: `${i} Classic — an elegant, curve-hugging black dress with a little extra bling on the ears`,
+						answer: `1. A data type that allows the declaration of related values.`,
 						id: `a${i}_1`
 					},
 					{
-						answer: `${i} Edgy elegance — a fierce red gown with a plunging neckline`,
-						description: 'Discover your celeb <strong>persona</strong> — and learn how to uncork your persona.',
+						answer: `2. A contract structure that defines the syntax that a class or object must follow.`,
 						id: `a${i}_2`
 					},
 					{
-						answer: `${i} Showstopper — a statement-making ensemble that looks like it could be a work of art`,
+						answer: `3. An object that exists at runtime and encapsulates related properties and methods.`,
 						id: `a${i}_3`
 					},
 					{
-						answer: `${i} Vintage Hollywood glamour — Kathryn Hepburn, eat your heart out!`,
+						answer: `4. There are no interfaces in TypeScript.`,
 						id: `a${i}_4`
 					}
 				],
-				title: 'How many resolutions do you have?',
+				title: 'In TypeScript, what is an interface?',
 				id: `q${i}`
 			});
 		}
 
 		const startQuestions = [
 			{
-				description: 'Discover your celeb persona — and learn how to uncork your persona.',
+				description: 'Enter your email to receive the results and a FREE 🎁 gift.',
 				placeholder: 'your email',
 				type: 'text',
 				title: 'Please enter your email',
@@ -68,12 +66,12 @@
 		];
 
 		const config = {
-			title: 'What’s Your Brand’s Irresistible "It Factor"?',
-			description: 'Discover your celeb persona — and learn how to uncork your personal "star power" to write copy that connects and converts, so you can infuse more YOU into every message your brand puts out into the world.',
-			image: 'https://s3-us-west-1.amazonaws.com/tryinteract-uploads/5c0f606f5f0f8d0013312fbe/_1282c3d0-2af3-11e9-aa6b-1b5e183061e0.jpg',
+			title: 'Are you a TypeScript Pro?',
+			description: 'Discover your TypeScript level by completing this quiz.',
+			image: 'https://images.unsplash.com/photo-1530303096301-ac0580dc4197?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
 			theme: 'light',
 			questions,
-			// startQuestions,
+			endQuestions: startQuestions,
 			// randomize: true,
 			pick: 5,
 			customLocale: {
@@ -89,7 +87,7 @@
 				sendResults: false,
 				showRetry: true,
 				showAnswers: true,
-				description: 'Discover your celeb persona — and learn how to uncork your personal "star power" to write copy that connects and converts, so you can infuse more YOU into every message your brand puts out into the world.',
+				description: 'You need to review a few things...',
 			}, 
 		};
 

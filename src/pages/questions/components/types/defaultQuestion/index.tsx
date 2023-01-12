@@ -20,15 +20,19 @@ export const DefaultQuestion = (): ReactElement => {
 
     return (
         <Container title={question.title} selected={selected} explanation={explanation} disabled={disabled}>
-            {question.answers?.map((answer) => (
-                <DefaultAnswer 
-                    key={answer.id}
-                    current={selected.includes(answer.id)} 
-                    onClick={handleChange(answer.id)}
-                    type='button'>
-                    {getAnswer(answer)}
-                </DefaultAnswer>
-            ))}
+            {question.answers?.map((answer, index) => {
+                const before = question.before?.replace('{0}', String(index + 1));
+
+                return (
+                    <DefaultAnswer
+                        key={answer.id}
+                        current={selected.includes(answer.id)} 
+                        onClick={handleChange(answer.id)}
+                        type='button'>
+                        {getAnswer(answer, before)}
+                    </DefaultAnswer>
+                );
+            })}
         </Container>
     );
 };
@@ -36,12 +40,13 @@ export const DefaultQuestion = (): ReactElement => {
 /**
  * Returns the answer element.
  * @param {IAnswer} answer - The answer.
+ * @param {string?} before - The before.
  */
-const getAnswer = (answer: IAnswer): ReactElement => (
+const getAnswer = (answer: IAnswer, before?: string): ReactElement => (
     <>
         {answer.image &&
 			<DefaultImg src={answer.image} alt={answer.answer} />}
-        {answer.answer}
+        {before}{answer.answer}
         {answer.description &&
 			<DefaultDescription dangerouslySetInnerHTML={{ __html: answer.description }} />}
     </>
@@ -119,7 +124,7 @@ const useExplanation = (question: IQuestion): string => {
 };
 
 /**
- * Returns if quesion accepts multiple answers.
+ * Returns if question accepts multiple answers.
  * @param {IQuestion} question - The question.
  */
 const isMulti = (question: IQuestion): boolean => {

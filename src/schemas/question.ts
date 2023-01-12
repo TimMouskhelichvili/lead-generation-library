@@ -19,6 +19,9 @@ export const questionSchema: Schema = {
             },
             type: 'array'
         },
+        before: {
+            type: 'string'
+        },
         columns: {
             type: 'number'
         },

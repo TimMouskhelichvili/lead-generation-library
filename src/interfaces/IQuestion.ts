@@ -65,4 +65,10 @@ export interface IQuestion {
 	 */
 	columns?: number;
 
+	/**
+	 * Adds something before the title.
+	 * {0} => corresponds to the answer index.
+	 */
+	pre?: string;
+
 }

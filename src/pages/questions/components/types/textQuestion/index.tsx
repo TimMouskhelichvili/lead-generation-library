@@ -87,10 +87,6 @@ const useError = (question: IQuestion, value: string): [ boolean, string | null,
 const useVerify = (question: IQuestion, value: string): string | null => {
     const locale = useStore(c => c.locale);
 
-    if (!value) {
-        return locale.invalidField;
-    }
-
     if (question.validate === ValidateType.email) {
         const res = validate(value, { format: 'email', type: 'string' });
         if (res.errors.length) {

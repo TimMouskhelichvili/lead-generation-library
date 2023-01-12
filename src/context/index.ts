@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import createContext from 'zustand/context';
 import { StoreApi } from 'zustand';
 import { DispatchParams } from 'src/context/types/dispatch';
@@ -23,8 +24,8 @@ export const {
  */
 export const useDispatch = (): (p: DispatchParams) => void => {
     const api = useStoreApi() as StoreApi<IContext>;
-
-    return (p: DispatchParams): void => {
+	
+    return useCallback((p: DispatchParams): void => {
         store[p.type]?.(api, p.value);
-    };
+    }, [ api ]);
 };

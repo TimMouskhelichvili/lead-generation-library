@@ -44,7 +44,8 @@ export const configurationSchema: Schema = {
             type: 'array'
         },
         randomize: {
-            type: 'boolean'
+            $ref: '/randomize',
+            type: 'object'
         },
         results: {
             $ref: '/results',

@@ -4,12 +4,15 @@ import { configurationSchema } from 'src/schemas/configuration';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultLocale, MyLocale } from 'src/locale';
+import { randomizeSchema } from 'src/schemas/randomize';
 import { questionSchema } from 'src/schemas/question';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { resultsSchema } from 'src/schemas/results';
 import { answerSchema } from 'src/schemas/answer';
 import { localeSchema } from 'src/schemas/locale';
 import { Status } from 'src/context/enums/status';
+import { IAnswer } from 'src/interfaces/IAnswer';
+import { shuffle } from 'src/utils/helpers';
 
 /**
  * Validates the configuration.
@@ -22,7 +25,8 @@ export const validateConfig = (config: IConfiguration): void => {
     validator.addSchema(questionSchema);
     validator.addSchema(localeSchema);
     validator.addSchema(resultsSchema);
-	
+    validator.addSchema(randomizeSchema);
+
     try {
         validator.validate(config, configurationSchema, {
             allowUnknownAttributes: false,
@@ -69,11 +73,18 @@ export const getDefaultState = (config: IConfiguration): IContext => {
 const getQuestions = (config: IConfiguration): IQuestion[] => {
     let questions = [ ...config.questions ];
 	
-    if (config.randomize) {
-        questions = questions
-            .map(value => ({ sort: Math.random(), value }))
-            .sort((a, b) => a.sort - b.sort)
-            .map(({ value }) => value);
+    if (config.randomize?.questions) {
+        shuffle<IQuestion>(questions);
+    }
+
+    if (config.randomize?.answers) {
+        questions = questions.map(question => {
+            if (question.answers) {
+                shuffle<IAnswer>(question.answers);
+            }
+
+            return question;
+        });
     }
 
     if (config.pick) {

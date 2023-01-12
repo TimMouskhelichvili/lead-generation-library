@@ -10,7 +10,10 @@ export interface IConfiguration {
 	startQuestions?: IQuestion[];
 	description?: string;
 	image?: string;
-	randomize?: boolean;
+	randomize?: {
+		questions: boolean;
+		answers: boolean;
+	};
 	pick?: number;
 	theme?: MyTheme;
 	language?: MyLanguage;

@@ -27,7 +27,7 @@
 	<div id="quiz"></div>
 	<script>
 		const questions = [];
-		for (let i = 0; i < 4; i++) {
+		for (let i = 0; i < 1; i++) {
 			questions.push({
 				//description: 'What is an <strong>interface</string>?',
 				answers: [
@@ -72,7 +72,10 @@
 			theme: 'light',
 			questions,
 			endQuestions: startQuestions,
-			// randomize: true,
+			randomize: {
+				questions: true,
+				answers: true
+			},
 			pick: 5,
 			customLocale: {
 				start: 'Start Quiz'

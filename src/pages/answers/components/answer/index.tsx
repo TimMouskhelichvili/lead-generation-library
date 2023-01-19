@@ -9,6 +9,7 @@ import { AnswerResult, AnswerSpan, AnswerResultContainer, AnswerResultTitle } fr
 export type AnswerState = 'error' | 'success' | 'correct';
 
 interface IAnswerProps {
+	index: number;
 	question: IQuestion;
 	answers: string[];
 	results: string[];
@@ -20,13 +21,14 @@ interface IAnswerProps {
  */
 export const Answer = (props: IAnswerProps): ReactElement => {
     const locale = useStore(c => c.locale);
+    const before = '{0}. '.replace('{0}', String(props.index + 1));
 
     return (
         <div>
-            <AnswerResultTitle>{props.question.title}</AnswerResultTitle>
+            <AnswerResultTitle>{before}{props.question.title}</AnswerResultTitle>
             <AnswerResultContainer key={props.question.id}>
                 {props.question.answers?.map(answer => {
-                    const correct = props.answers.includes(answer.id);
+                    const correct = props.answers?.includes(answer.id);
                     let state: AnswerState | null = null;
                     let icon = null;
 

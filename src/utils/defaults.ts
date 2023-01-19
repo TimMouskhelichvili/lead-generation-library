@@ -5,6 +5,7 @@ import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultLocale, MyLocale } from 'src/locale';
 import { randomizeSchema } from 'src/schemas/randomize';
+import { callbacksSchema } from 'src/schemas/callbacks';
 import { questionSchema } from 'src/schemas/question';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { resultsSchema } from 'src/schemas/results';
@@ -25,6 +26,7 @@ export const validateConfig = (config: IConfiguration): void => {
     validator.addSchema(localeSchema);
     validator.addSchema(resultsSchema);
     validator.addSchema(randomizeSchema);
+    validator.addSchema(callbacksSchema);
 
     try {
         validator.validate(config, configurationSchema, {
@@ -45,7 +47,11 @@ export const getDefaultState = (config: IConfiguration): IContext => {
     const questions = getQuestions(config);
 
     return {
-        answers: config.answers,
+        callbacks: {
+            onClick: config.callbacks?.onClick,
+            onError: config.callbacks?.onError,
+            onSend: config.callbacks?.onSend
+        },
         config,
         current: 0,
         description: config.description,
@@ -56,9 +62,9 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         results: {
             description: config.results?.description,
             items: {},
-            sendResults: config.results?.sendResults ?? true,
             showAnswers: config.results?.showAnswers,
-            showRetry: config.results?.showRetry
+            showRetry: config.results?.showRetry,
+            title: config.results?.title
         },
         status: 'NOT_STARTED',
         title: config.title

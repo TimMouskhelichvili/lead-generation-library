@@ -30,14 +30,16 @@ export const Container = (props: IProps): ReactElement => {
     const question = useStore(c => c.question);
     const error = useStore(c => c.error);
 
+    const isLastQuestion = useStore(c => c.isLastQuestion);
     const dispatch = useDispatch();
     const button = useButton(props);
 	
     const columns = question.columns || 1;
-
+	
     const handleSubmit = (e: React.FormEvent): void => {
         e.preventDefault();
-        dispatch({ type: 'SUBMIT', value: props.selected });
+        const type = isLastQuestion ? 'SUBMIT_QUIZ' : 'SUBMIT_ANSWER';
+        dispatch({ type, value: props.selected });
     };
 
     return (

@@ -5,16 +5,16 @@ export const resultsSchema: Schema = {
     id: '/results',
     properties: {
         description: {
-            type: 'string'
-        },
-        sendResults: {
-            type: 'boolean'
+            type: [ 'string', 'function' ]
         },
         showAnswers: {
             type: 'boolean'
         },
         showRetry: {
             type: 'boolean'
+        },
+        title: {
+            type: [ 'string', 'function' ]
         }
     },
     type: 'object'

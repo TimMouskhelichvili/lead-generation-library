@@ -47,6 +47,11 @@ export interface IQuestion {
 	 * The answers.
 	 */
 	answers?: IAnswer[];
+
+	/**
+	 * The correct answers.
+	 */
+	correctAnswers?: string[];
 	
 	/**
 	 * The placeholder for the text field.

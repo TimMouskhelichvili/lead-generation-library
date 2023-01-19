@@ -24,4 +24,5 @@ export const QuizRow = styled.div`
 	padding-right: 1em;
 	max-width: 800px;
 	margin-bottom: 30px;
+	margin-top: 30px;
 `;

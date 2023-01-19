@@ -6,7 +6,6 @@ export const MainContainer = styled.div`
 `;
 
 export const MainH1 = styled.h1`
-	padding-top: 30px;
 	font-size: 2em;
 	margin: 0px;
 

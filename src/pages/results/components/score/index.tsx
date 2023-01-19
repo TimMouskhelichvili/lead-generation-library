@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
-import { getFilteredQuestions } from 'src/utils/questions';
-import { getCorrectCount } from 'src/pages/results/utils';
+import { useScore } from 'src/pages/results/utils';
 import { useStore } from 'src/context';
 import { ScoreAnswers, ScoreContent, ScoreTitle, ScoreContainer } from './style';
 
@@ -8,18 +7,8 @@ import { ScoreAnswers, ScoreContent, ScoreTitle, ScoreContainer } from './style'
  * The Score component.
  */
 export const Score = (): ReactElement | null => {
-    const questions = useStore(c => c.questions);
-    const { items } = useStore(c => c.results);
-    const answers = useStore(c => c.answers);
     const locale = useStore(c => c.locale);
-
-    if (!answers) {
-        return null;
-    }
-
-    const length = getFilteredQuestions(questions).length;
-    const correct = getCorrectCount(items, answers);
-    const score = `${Math.floor(correct / length * 100)}%`;
+    const { correctAnswers, score, total } = useScore();
 
     const title = length > 1 ? 
         locale.resultsAnswers : locale.resultsAnswer;
@@ -29,10 +18,10 @@ export const Score = (): ReactElement | null => {
             <ScoreContainer>
                 <ScoreContent>
                     <ScoreTitle>
-                        {score}
+                        {`${score}%`}
                     </ScoreTitle>
                     <ScoreAnswers>
-                        {title.replace('{0}', `${correct}/${length}`)}
+                        {title.replace('{0}', `${correctAnswers}/${total}`)}
                     </ScoreAnswers>
                 </ScoreContent>
             </ScoreContainer>

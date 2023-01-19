@@ -1,5 +1,7 @@
+import { getFilteredQuestions, getQuestionsAnswers } from 'src/utils/questions';
 import { IAnswers } from 'src/interfaces/IAnswers';
 import { IResults } from 'src/interfaces/IResults';
+import { useStore } from 'src/context';
 
 /**
  * Returns the correct answers count.
@@ -25,4 +27,29 @@ export const getCorrectCount = (results: IResults, answers: IAnswers): number =>
     }
 
     return cpt;
+};
+
+export interface IScoreResponse {
+	total: number;
+	correctAnswers: number;
+	score: number;
+}
+
+/**
+ * Returns the score hook.
+ */
+export const useScore = (): IScoreResponse => {
+    const questions = useStore(c => c.questions);
+    const { items } = useStore(c => c.results);
+    const answers = getQuestionsAnswers(questions);
+	
+    const total = getFilteredQuestions(questions).length;
+    const correctAnswers = getCorrectCount(items, answers);
+    const score = Math.floor(correctAnswers / total * 100);
+
+    return {
+        correctAnswers,
+        score,
+        total
+    };
 };

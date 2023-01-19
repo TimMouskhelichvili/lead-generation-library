@@ -25,6 +25,12 @@ export const questionSchema: Schema = {
         columns: {
             type: 'number'
         },
+        correctAnswers: {
+            items: { 
+                type: 'string'
+            },
+            type: 'array'
+        },
         description: {
             type: 'string'
         },

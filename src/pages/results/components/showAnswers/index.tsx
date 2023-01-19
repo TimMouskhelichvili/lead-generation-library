@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { getCorrectCount } from 'src/pages/results/utils';
+import { getQuestionsAnswers } from 'src/utils/questions';
 import { useDispatch, useStore } from 'src/context';
 import { ResultsShowAnswers } from './style';
 
@@ -9,8 +10,9 @@ import { ResultsShowAnswers } from './style';
 export const ShowAnswers = (): ReactElement | null => {
     const { showAnswers } = useStore(c => c.results);
     const { items } = useStore(c => c.results);
-    const answers = useStore(c => c.answers);
+    const questions = useStore(c => c.questions);
     const locale = useStore(c => c.locale);
+    const answers = getQuestionsAnswers(questions);
 
     const dispatch = useDispatch();
 

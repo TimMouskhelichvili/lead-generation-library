@@ -7,7 +7,6 @@ export const AnswersContainer = styled.div`
 
 export const AnswersTitle = styled.h1`
 	text-align: center;
-	padding-top: 30px;
 	font-size: 2em;
 	margin: 0px;
 
@@ -18,13 +17,29 @@ export const AnswersTitle = styled.h1`
 
 export const AnswersResultsContainer = styled.div`
 	margin-top: 20px;
+	margin-bottom: 20px;
 `;
 
 export const AnswersGoBack = styled.div`
-	margin-top: 20px;
+	position: sticky;
+	bottom: 0;
+    left: 0;
+    padding-bottom: 1em;
+	text-align: center;
+`;
 
-	span {
-		cursor: pointer;
-		text-decoration: underline;
+export const AnswersGoBackButton = styled.button`
+	border: 0px;
+	background: ${(p): string => p.theme.colors.primary};
+	padding: 10px 20px;
+	color: white;
+	border-radius: ${(p): string => p.theme.global.radius};
+	font-size: 1.1em;
+	cursor: pointer;
+	user-select: none;
+	position: sticky;
+
+	&:hover {
+		background: ${(p): string => p.theme.colors.primaryDarken};
 	}
 `;

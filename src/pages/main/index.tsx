@@ -26,7 +26,7 @@ export const Main = (): ReactElement => {
                 </MainImageContainer>
             )}
             {description && 
-				<MainDescription>{description}</MainDescription>}
+				<MainDescription dangerouslySetInnerHTML={{ __html: description }} />}
             <MainButton type='button' onClick={handleStartQuiz}>
                 {locale.start}
             </MainButton>

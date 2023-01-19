@@ -1,26 +1,26 @@
 import { Reducer } from 'src/context/types/reducer';
-import { sendResults } from 'src/apis';
 
-export type ApiAction = 'SEND';
+export type ApiAction = 'BEFORE_SUBMIT';
 
 /**
- * The api reducer.
+ * The callbacks reducer.
  */
-export const apiReducer: Reducer<ApiAction> = {
-    'SEND': async (api) => {
+export const callbacksReducer: Reducer<ApiAction> = {
+    'BEFORE_SUBMIT': async (api) => {
         const state = api.getState();
         let error = false;
 
         api.setState({ error: '' });
 	
-        if (!state.results.sendResults) {
+        if (!state.callbacks.onSend) {
             api.setState({ status: 'COMPLETED' });
             return;
         }
 
         try {
-            await sendResults(state.results.items);
-        } catch {
+            await state.callbacks.onSend(state.results.items);
+        } catch (e) {
+            state.callbacks.onError?.(e);
             error = true;
         }
 	

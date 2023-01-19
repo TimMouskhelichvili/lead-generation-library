@@ -6,6 +6,7 @@ export const enLocale = {
     invalidEmail: 'Please enter a valid email.',
     invalidField: 'Please enter a valid value.',
     ok: 'Ok',
+    questionNum: 'Question {0} of {1}',
     resultsAnswer: '{0} correct answer',
     resultsAnswers: '{0} correct answers',
     resultsThankYou: 'Thank you!',

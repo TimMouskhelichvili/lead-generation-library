@@ -16,7 +16,7 @@ export const useContextUpdates = (): void => {
 
     useEffect(() => {
         if (status === 'SUBMITTING') {
-            dispatch({ type: 'SEND' });
+            dispatch({ type: 'BEFORE_SUBMIT' });
         }
     }, [ status, dispatch ]);
 };

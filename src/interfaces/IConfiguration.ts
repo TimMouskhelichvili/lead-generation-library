@@ -1,5 +1,5 @@
+import { ICallbacks } from 'src/interfaces/ICallbacks';
 import { IQuestion } from 'src/interfaces/IQuestion';
-import { IAnswers } from 'src/interfaces/IAnswers';
 import { MyLanguage, MyLocale } from 'src/locale';
 import { MyTheme } from 'src/theme';
 
@@ -18,13 +18,13 @@ export interface IConfiguration {
 	theme?: MyTheme;
 	language?: MyLanguage;
 	customLocale?: MyLocale;
-	answers?: IAnswers;
 	results?: IConfigurationResults;
+	callbacks: ICallbacks;
 }
 
 export interface IConfigurationResults {
-	description?: string;
-	sendResults?: boolean;
 	showRetry?: boolean;
 	showAnswers?: boolean;
+	description?: string | ((score: number) => string);
+	title?: string | ((score: number) => string);
 }

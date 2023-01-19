@@ -6,7 +6,6 @@ export const ResultsContainer = styled.div`
 `;
 
 export const ResultsTitle = styled.h1`
-	padding-top: 30px;
 	font-size: 2em;
 	margin: 0px;
 

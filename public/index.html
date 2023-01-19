@@ -27,7 +27,7 @@
 	<div id="quiz"></div>
 	<script>
 		const questions = [];
-		for (let i = 0; i < 1; i++) {
+		for (let i = 0; i < 10; i++) {
 			questions.push({
 				//description: 'What is an <strong>interface</string>?',
 				answers: [
@@ -48,8 +48,9 @@
 						id: `a${i}_4`
 					}
 				],
+				correctAnswers: [ `a${i}_2` ],
 				before: '{0}. ',
-				title: 'In TypeScript, what is an interface?',
+				title: `${i} In TypeScript, what is an interface?`,
 				id: `q${i}`
 			});
 		}
@@ -67,13 +68,19 @@
 			}
 		];
 
+		const sleep = async (milliseconds) => {
+			await new Promise(resolve => {
+				return setTimeout(resolve, milliseconds)
+			});
+		};
+
 		const config = {
 			title: 'Are you a TypeScript Pro?',
 			description: 'Discover your TypeScript level by completing this quiz.',
 			image: 'https://images.unsplash.com/photo-1530303096301-ac0580dc4197?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
 			theme: 'light',
 			questions,
-			endQuestions: startQuestions,
+			// endQuestions: startQuestions,
 			randomize: {
 				questions: true,
 				answers: true
@@ -82,18 +89,25 @@
 			customLocale: {
 				start: 'Start Quiz'
 			},
-			answers: {
-				q0: [ "a0_2" ],
-				q1: [ "a1_1" ],
-				q2: [ "a2_3" ],
-				q3: [ "a3_4" ]
-			},
 			results: {
-				sendResults: false,
 				showRetry: true,
 				showAnswers: true,
-				description: 'You need to review a few things...',
-			}, 
+				description: (score) => {
+					return `You need to review a few ${score} things...`;
+				},
+				// title: (score) => {
+				// 	return `You need to review a few ${score} things...`;
+				// }
+			},
+			callbacks: {
+				onSend: async (items) => {
+					await sleep(300);
+					console.log(items);
+				},
+				onClick: (type, data) => {
+					console.log(type, data);
+				}
+			}
 		};
 
 		document.addEventListener('DOMContentLoaded', function() {

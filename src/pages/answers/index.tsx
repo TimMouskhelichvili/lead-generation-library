@@ -1,37 +1,18 @@
 import React, { ReactElement } from 'react';
-import { Answer } from 'src/pages/answers/components/answer';
-import { getFilteredQuestions } from 'src/utils/questions';
+import { AnswersList } from 'src/pages/answers/components/list';
 import { useDispatch, useStore } from 'src/context';
-import { AnswersContainer, AnswersGoBack, AnswersResultsContainer, AnswersTitle } from './style';
+import { AnswersContainer, AnswersGoBackButton, AnswersGoBack, AnswersResultsContainer, AnswersTitle } from './style';
 
 /**
  * The answers component.
  */
 export const Answers = (): ReactElement | null => {
-    const questions = useStore(c => c.questions);
-    const answers = useStore(c => c.answers);
-    const locale = useStore(c => c.locale);
-    const { items } = useStore(c => c.results);
     const dispatch = useDispatch();
-
-    if (!answers) {
-        return null;
-    }
+    const locale = useStore(c => c.locale);
 
     const handleGoBack = (): void => {
         dispatch({ type: 'GO_BACK_TO_ANSWERS' });
     };
-
-    const list: ReactElement[] = [];
-    getFilteredQuestions(questions).forEach(question => {
-        list.push(
-            <Answer
-                key={question.id} 
-                question={question} 
-                answers={answers[question.id]} 
-                results={items[question.id]} />
-        );
-    });
 
     return (
         <AnswersContainer>
@@ -39,10 +20,12 @@ export const Answers = (): ReactElement | null => {
                 {locale.answersTitle}
             </AnswersTitle>
             <AnswersResultsContainer>
-                {list}
+                <AnswersList />
             </AnswersResultsContainer>
             <AnswersGoBack>
-                <span onClick={handleGoBack}>{locale.goBack}</span>
+                <AnswersGoBackButton onClick={handleGoBack}>
+                    {locale.goBack}
+                </AnswersGoBackButton>
             </AnswersGoBack>
         </AnswersContainer>
     );

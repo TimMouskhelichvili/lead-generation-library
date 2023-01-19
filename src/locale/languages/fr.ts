@@ -8,6 +8,7 @@ export const frLocale: MyLocale = {
     invalidEmail: 'Veuillez entrer une adresse e-mail valide.',
     invalidField: 'Veuillez entrer une valeur valide.',
     ok: 'Ok',
+    questionNum: 'Question {0} de {1}',
     resultsAnswer: '{0} réponse valide',
     resultsAnswers: '{0} réponses valides',
     resultsThankYou: 'Merci beaucoup!',

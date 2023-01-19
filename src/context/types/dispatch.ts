@@ -1,9 +1,7 @@
-import { QuizAction } from 'src/context/reducers/quiz';
-import { CoreAction } from 'src/context/reducers/core';
-import { ApiAction } from 'src/context/reducers/api';
+import { EventType } from 'src/context/types/eventType';
 
 export type DispatchParams = {
-    type: CoreAction | QuizAction | ApiAction;
+    type: EventType;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value?: any;
 }

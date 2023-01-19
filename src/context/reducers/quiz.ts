@@ -2,7 +2,7 @@ import { StoreApi } from 'zustand';
 import { IContext } from 'src/context/interfaces/IContext';
 import { Reducer } from 'src/context/types/reducer';
 
-export type QuizAction = 'NEXT' | 'PREVIOUS' | 'SUBMIT' | 'UPDATE';
+export type QuizAction = 'NEXT' | 'PREVIOUS' | 'SUBMIT_QUIZ' | 'SUBMIT_ANSWER' | 'UPDATE';
 
 /**
  * The quiz reducer.
@@ -18,19 +18,11 @@ export const quizReducer: Reducer<QuizAction> = {
             current: api.getState().current - 1
         });
     },
-    'SUBMIT': (api, value) => {
-        const state = api.getState();
-
-        api.setState({
-            current: getNext(api),
-            results: {
-                ...state.results,
-                items: {
-                    ...state.results.items,
-                    [state.questions[state.current].id]: value 
-                }
-            }
-        });
+    'SUBMIT_ANSWER': (api, value) => {
+        submit(api, value);
+    },
+    'SUBMIT_QUIZ': (api, value) => {
+        submit(api, value);
     },
     'UPDATE': (api) => {
         const state = api.getState();
@@ -48,6 +40,27 @@ export const quizReducer: Reducer<QuizAction> = {
             status
         });
     }
+};
+
+/**
+ * Returns the next.
+ * @param {StoreApi<IContext>} api - The api.
+ * @param {string} value - The value.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const submit = (api: StoreApi<IContext>, value: any): void => {
+    const state = api.getState();
+
+    api.setState({
+        current: getNext(api),
+        results: {
+            ...state.results,
+            items: {
+                ...state.results.items,
+                [state.questions[state.current].id]: value 
+            }
+        }
+    });
 };
 
 /**

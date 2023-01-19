@@ -4,3 +4,6 @@ junit/
 public/
 src/
 webpack.config.js
+.eslintignore
+.eslintrc.js
+tsconfig.json

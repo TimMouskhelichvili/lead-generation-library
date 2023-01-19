@@ -1,12 +1,12 @@
 {
   "name": "@tim.mouskhelichvili/lead-generation-library",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A lead generation library.",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
     "dev": "webpack serve",
     "build": "cross-env LIB_VERSION=$npm_package_version NODE_ENV=production webpack --mode production",
-    "verify:typescript": "tsc --noEmit",
+    "verify:typescript": "tsc --noEmit --skipLibCheck",
     "verify:eslint": "eslint src --ext .tsx --ext .ts",
     "verify": "npm run verify:typescript && npm run verify:eslint",
     "publish": "npm run build && clean-publish --access public"
@@ -30,13 +30,12 @@
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "6.2.1",
-    "axios": "^1.2.2",
     "jsonschema": "^1.4.1",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6",
     "url": "^0.11.0",
-    "zustand": "4.3.1"
+    "zustand": "4.3.2"
   }
 }

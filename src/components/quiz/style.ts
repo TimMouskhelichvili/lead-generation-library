@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { IStyles } from 'src/interfaces/IStyles';
 
-export const QuizContainer = styled.div`
+export const QuizContainer = styled.div<{ styles: IStyles }>`
 	width: 100%;
 	height: 100%;
 	overflow-x: auto;
@@ -14,6 +15,21 @@ export const QuizContainer = styled.div`
 	* {
 		box-sizing: border-box;
 	}
+
+	${(p): string => {
+        let r = '';
+
+        if (p.styles.height) {
+            r += `height:${p.styles.height};`;
+        }
+
+        if (p.styles.alignCenter) {
+            r += 'display: flex; align-items: center;';
+        }
+
+
+        return r;
+    }}
 `;
 
 export const QuizRow = styled.div`
@@ -23,6 +39,6 @@ export const QuizRow = styled.div`
 	padding-left: 1em;
 	padding-right: 1em;
 	max-width: 800px;
-	margin-bottom: 30px;
-	margin-top: 30px;
+	margin-bottom: 1em;
+	margin-top: 1em;
 `;

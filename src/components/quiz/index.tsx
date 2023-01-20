@@ -12,6 +12,7 @@ import { QuizContainer, QuizRow } from './style';
  */
 export const Quiz = (): ReactElement => {
     const status = useStore(c => c.status);
+    const styles = useStore(c => c.styles);
 
     useContextUpdates();
 
@@ -28,7 +29,7 @@ export const Quiz = (): ReactElement => {
     };
 
     return (
-        <QuizContainer>
+        <QuizContainer styles={styles}>
             <QuizRow>
                 {getElementByStatus()}
             </QuizRow>

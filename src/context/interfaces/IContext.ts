@@ -2,6 +2,7 @@ import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { ICallbacks } from 'src/interfaces/ICallbacks';
 import { IQuestion } from 'src/interfaces/IQuestion';
 import { IResults } from 'src/interfaces/IResults';
+import { IStyles } from 'src/interfaces/IStyles';
 import { Status } from 'src/types/enums';
 import { MyLocale } from 'src/locale';
 
@@ -25,6 +26,7 @@ export interface IContext {
 	error?: string;
 
 	callbacks: ICallbacks;
+	styles: IStyles;
 }
 
 export interface IContextResults {

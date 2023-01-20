@@ -31,10 +31,10 @@ export const AnswersGoBack = styled.div`
 export const AnswersGoBackButton = styled.button`
 	border: 0px;
 	background: ${(p): string => p.theme.colors.primary};
-	padding: 10px 20px;
+	padding: 15px 30px;
 	color: white;
 	border-radius: ${(p): string => p.theme.global.radius};
-	font-size: 1.1em;
+	font-size: 1.3em;
 	cursor: pointer;
 	user-select: none;
 	position: sticky;

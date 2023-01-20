@@ -52,6 +52,10 @@ export const configurationSchema: Schema = {
             },
             type: 'array'
         },
+        styles: {
+            $ref: '/styles',
+            type: 'object'
+        },
         theme: {
             enum: Object.keys(themes),
             type: 'string'

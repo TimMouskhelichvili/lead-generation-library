@@ -11,6 +11,7 @@ import { IQuestion } from 'src/interfaces/IQuestion';
 import { resultsSchema } from 'src/schemas/results';
 import { answerSchema } from 'src/schemas/answer';
 import { localeSchema } from 'src/schemas/locale';
+import { stylesSchema } from 'src/schemas/styles';
 import { IAnswer } from 'src/interfaces/IAnswer';
 import { shuffle } from 'src/utils/helpers';
 
@@ -27,6 +28,7 @@ export const validateConfig = (config: IConfiguration): void => {
     validator.addSchema(resultsSchema);
     validator.addSchema(randomizeSchema);
     validator.addSchema(callbacksSchema);
+    validator.addSchema(stylesSchema);
 
     try {
         validator.validate(config, configurationSchema, {
@@ -67,6 +69,10 @@ export const getDefaultState = (config: IConfiguration): IContext => {
             title: config.results?.title
         },
         status: 'NOT_STARTED',
+        styles: {
+            alignCenter: Boolean(config.styles?.alignCenter),
+            height: config.styles?.height
+        },
         title: config.title
     };
 };

@@ -1,5 +1,6 @@
 import { ICallbacks } from 'src/interfaces/ICallbacks';
 import { IQuestion } from 'src/interfaces/IQuestion';
+import { IStyles } from 'src/interfaces/IStyles';
 import { MyLanguage, MyLocale } from 'src/locale';
 import { MyTheme } from 'src/theme';
 
@@ -19,7 +20,8 @@ export interface IConfiguration {
 	language?: MyLanguage;
 	customLocale?: MyLocale;
 	results?: IConfigurationResults;
-	callbacks: ICallbacks;
+	styles?: IStyles;
+	callbacks?: ICallbacks;
 }
 
 export interface IConfigurationResults {

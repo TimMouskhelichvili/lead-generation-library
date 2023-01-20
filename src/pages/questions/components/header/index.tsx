@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { getFilteredQuestions } from 'src/utils/questions';
 import { useStore } from 'src/context';
+import { StyledHeader } from './style';
 
 /**
  * The QuestionsHeader component.
@@ -19,5 +20,5 @@ export const QuestionsHeader = (): ReactElement | null => {
         return null;
     }
     
-    return <div>{num}</div>;
+    return <StyledHeader>{num}</StyledHeader>;
 };

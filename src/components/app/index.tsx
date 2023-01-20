@@ -1,11 +1,10 @@
 import React from 'react';
 import create, { StoreApi } from 'zustand';
-import { ThemeProvider, StyleSheetManager } from 'styled-components';
+import { StyleSheetManager } from 'styled-components';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IContext } from 'src/context/interfaces/IContext';
+import { AppWithTheme } from 'src/components/appWithTheme';
 import { getDefaultState } from 'src/utils/defaults';
-import { getDefaultTheme } from 'src/theme';
-import { Quiz } from 'src/components/quiz';
 import { Provider } from 'src/context';
 
 interface IProps {
@@ -24,11 +23,9 @@ export const App = (props: IProps): React.ReactElement => {
 
     return (
         <StyleSheetManager target={props.styleSection}>
-            <ThemeProvider theme={getDefaultTheme(props.config.theme)}>
-                <Provider createStore={createStore}>
-                    <Quiz />
-                </Provider>
-            </ThemeProvider>
+            <Provider createStore={createStore}>
+                <AppWithTheme />
+            </Provider>
         </StyleSheetManager>
     );
 };

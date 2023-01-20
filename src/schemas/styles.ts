@@ -9,6 +9,12 @@ export const stylesSchema: Schema = {
         },
         height: {
             type: 'string'
+        },
+        primary: {
+            type: 'string'
+        },
+        primaryHovered: {
+            type: 'string'
         }
     },
     type: 'object'

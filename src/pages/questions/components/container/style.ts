@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const ContainerTitle = styled.h1`
 	font-size: 1.8em;
+	line-height: 30px;
 	margin: 0px;
+	user-select: none;
 `;
 
 export const ContainerContent = styled.div<{ columns: number; }>`
@@ -15,6 +17,7 @@ export const ContainerContent = styled.div<{ columns: number; }>`
 export const ContainerExplanation = styled.div`
 	padding-top: 10px;
 	font-style: italic;
+	user-select: none;
 `;
 
 export const ContainerButtons = styled.div`

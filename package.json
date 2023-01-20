@@ -1,6 +1,6 @@
 {
   "name": "@tim.mouskhelichvili/lead-generation-library",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A lead generation library.",
   "main": "dist/main.js",
   "scripts": {

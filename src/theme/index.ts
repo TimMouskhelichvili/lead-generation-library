@@ -2,6 +2,7 @@ import { lightTheme } from 'src/theme/themes/light';
 import { darkTheme } from 'src/theme/themes/dark';
 import { configuration } from 'src/configuration';
 import { DefaultTheme } from 'styled-components';
+import { IStyles } from 'src/interfaces/IStyles';
 
 /**
  * The themes.
@@ -25,13 +26,14 @@ export type MyDefaultTheme = typeof lightTheme;
 /**
  * Returns the default theme.
  * @param {MyTheme} theme - The theme.
+ * @param {IStyles} styles - The styles.
  */
-export const getDefaultTheme = (theme?: MyTheme): DefaultTheme => {
-    const def = themes[configuration.theme as MyTheme];
+export const getDefaultTheme = (theme: MyTheme, styles: IStyles): DefaultTheme => {
+    const def = themes[theme] ? 
+        themes[theme] : themes[configuration.theme as MyTheme];
 
-    if (!theme) {
-        return def;
-    }
+    def.colors.primary = styles.primary;
+    def.colors.primaryDarken = styles.primaryHovered;
 	 
-    return themes[theme] ? themes[theme] : def;
+    return def;
 };

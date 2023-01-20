@@ -1,4 +1,6 @@
 export interface IStyles {
 	height?: string;
-	alignCenter?: boolean;
+	alignCenter: boolean;
+	primary: string;
+	primaryHovered: string;
 } 

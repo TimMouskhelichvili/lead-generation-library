@@ -12,6 +12,8 @@ import { resultsSchema } from 'src/schemas/results';
 import { answerSchema } from 'src/schemas/answer';
 import { localeSchema } from 'src/schemas/locale';
 import { stylesSchema } from 'src/schemas/styles';
+import { configuration } from 'src/configuration';
+import { IStyles } from 'src/interfaces/IStyles';
 import { IAnswer } from 'src/interfaces/IAnswer';
 import { shuffle } from 'src/utils/helpers';
 
@@ -71,9 +73,12 @@ export const getDefaultState = (config: IConfiguration): IContext => {
         status: 'NOT_STARTED',
         styles: {
             alignCenter: Boolean(config.styles?.alignCenter),
-            height: config.styles?.height
+            height: config.styles?.height,
+            primary: config.styles?.primary || configuration.primary,
+            primaryHovered: config.styles?.primaryHovered || configuration.primaryHovered
         },
-        title: config.title
+        theme: config.theme || configuration.theme,
+        title: config.title 
     };
 };
 
@@ -90,7 +95,7 @@ const getQuestions = (config: IConfiguration): IQuestion[] => {
 
     if (config.randomize?.answers) {
         questions = questions.map(question => {
-            if (question.answers) {
+            if (question.answers && question.answers.length > 2) {
                 shuffle<IAnswer>(question.answers);
             }
 

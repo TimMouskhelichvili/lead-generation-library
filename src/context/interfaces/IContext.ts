@@ -5,6 +5,7 @@ import { IResults } from 'src/interfaces/IResults';
 import { IStyles } from 'src/interfaces/IStyles';
 import { Status } from 'src/types/enums';
 import { MyLocale } from 'src/locale';
+import { MyTheme } from 'src/theme';
 
 export interface IContext {	
 	title: string;
@@ -27,6 +28,7 @@ export interface IContext {
 
 	callbacks: ICallbacks;
 	styles: IStyles;
+	theme: MyTheme;
 }
 
 export interface IContextResults {

@@ -11,6 +11,7 @@ export const DefaultAnswer = styled.button<{ current: boolean; }>`
 	width: 100%;
 	text-align: left;
 	font-size: 1em;
+	user-select: none;
 
 	${(p): string => p.current ? `
 		border: 1px solid ${p.theme.colors.primary};

@@ -20,7 +20,7 @@ export interface IConfiguration {
 	language?: MyLanguage;
 	customLocale?: MyLocale;
 	results?: IConfigurationResults;
-	styles?: IStyles;
+	styles?: Partial<IStyles>;
 	callbacks?: ICallbacks;
 }
 

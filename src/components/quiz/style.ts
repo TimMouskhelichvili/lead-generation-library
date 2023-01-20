@@ -36,4 +36,5 @@ export const QuizRow = styled.div`
 	margin: auto;
 	padding: 1em;
 	max-width: 800px;
+	width: 100%;
 `;

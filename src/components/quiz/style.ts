@@ -24,7 +24,7 @@ export const QuizContainer = styled.div<{ styles: IStyles }>`
         }
 
         if (p.styles.alignCenter) {
-            r += 'display: flex; align-items: center;';
+            r += 'display: grid;';
         }
 
 
@@ -33,12 +33,7 @@ export const QuizContainer = styled.div<{ styles: IStyles }>`
 `;
 
 export const QuizRow = styled.div`
-	position: relative;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 1em;
-	padding-right: 1em;
+	margin: auto;
+	padding: 1em;
 	max-width: 800px;
-	margin-bottom: 1em;
-	margin-top: 1em;
 `;

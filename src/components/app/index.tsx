@@ -1,6 +1,6 @@
 import React from 'react';
 import create, { StoreApi } from 'zustand';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, StyleSheetManager } from 'styled-components';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { IContext } from 'src/context/interfaces/IContext';
 import { getDefaultState } from 'src/utils/defaults';
@@ -10,6 +10,7 @@ import { Provider } from 'src/context';
 
 interface IProps {
 	config: IConfiguration;
+	styleSection: HTMLElement;
 }
 
 /**
@@ -22,10 +23,12 @@ export const App = (props: IProps): React.ReactElement => {
     };
 
     return (
-        <ThemeProvider theme={getDefaultTheme(props.config.theme)}>
-            <Provider createStore={createStore}>
-                <Quiz />
-            </Provider>
-        </ThemeProvider>
+        <StyleSheetManager target={props.styleSection}>
+            <ThemeProvider theme={getDefaultTheme(props.config.theme)}>
+                <Provider createStore={createStore}>
+                    <Quiz />
+                </Provider>
+            </ThemeProvider>
+        </StyleSheetManager>
     );
 };

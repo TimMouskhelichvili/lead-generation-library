@@ -4,10 +4,10 @@ export const callbacksSchema: Schema = {
     additionalProperties: false,
     id: '/callbacks',
     properties: {
-        onClick: {
+        onError: {
             type: 'function'
         },
-        onError: {
+        onEvent: {
             type: 'function'
         },
         onSend: {

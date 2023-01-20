@@ -42,6 +42,11 @@ export interface IQuestion {
 	 * Validates the field.
 	 */
 	validate?: ValidateType;
+
+	/**
+	 * Returns if question is visible.
+	 */
+	isVisible?: () => boolean;
 	
 	/**
 	 * The answers.

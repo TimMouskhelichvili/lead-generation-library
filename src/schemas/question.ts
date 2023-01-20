@@ -43,6 +43,9 @@ export const questionSchema: Schema = {
         id: {
             type: 'string'
         },
+        isVisible: {
+            type: 'function'
+        },
         max: {
             type: 'number'
         },

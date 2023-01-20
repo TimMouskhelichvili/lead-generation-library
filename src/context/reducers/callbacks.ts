@@ -1,3 +1,4 @@
+import { sendEvent } from 'src/context/utils/events';
 import { Reducer } from 'src/context/types/reducer';
 
 export type ApiAction = 'BEFORE_SUBMIT';
@@ -18,7 +19,10 @@ export const callbacksReducer: Reducer<ApiAction> = {
         }
 
         try {
-            await state.callbacks.onSend(state.results.items);
+            const result = await state.callbacks.onSend(state.results.items);
+            if (result) {
+                sendEvent('QUIZ_RESULTS_SEND', api);
+            }
         } catch (e) {
             state.callbacks.onError?.(e);
             error = true;

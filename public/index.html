@@ -27,7 +27,7 @@
 	<div id="quiz"></div>
 	<script>
 		const questions = [];
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 1; i++) {
 			questions.push({
 				//description: 'What is an <strong>interface</string>?',
 				answers: [
@@ -48,7 +48,7 @@
 						id: `a${i}_4`
 					}
 				],
-				correctAnswers: [ `a${i}_2` ],
+				correctAnswers: [ `a${i}_2`, `a${i}_3` ],
 				before: '{0}. ',
 				title: `${i} In TypeScript, what is an interface?`,
 				id: `q${i}`
@@ -63,6 +63,9 @@
 				title: 'Please enter your email',
 				hideNavigation: true,
 				hideFromResults: true,
+				isVisible: () => {
+					return !localStorage.getItem('VISIBLE');
+				},
 				validate: 'email',
 				id: 'f1'
 			}
@@ -80,15 +83,12 @@
 			image: 'https://images.unsplash.com/photo-1530303096301-ac0580dc4197?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80',
 			theme: 'light',
 			questions,
-			// endQuestions: startQuestions,
+			endQuestions: startQuestions,
 			randomize: {
 				questions: true,
 				answers: true
 			},
 			pick: 5,
-			customLocale: {
-				start: 'Start Quiz'
-			},
 			results: {
 				showRetry: true,
 				showAnswers: true,
@@ -103,8 +103,9 @@
 				onSend: async (items) => {
 					await sleep(300);
 					console.log(items);
+					return false;
 				},
-				onClick: (type, data) => {
+				onEvent: (type, data) => {
 					console.log(type, data);
 				}
 			}

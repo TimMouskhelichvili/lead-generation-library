@@ -48,8 +48,8 @@ export const getDefaultState = (config: IConfiguration): IContext => {
 
     return {
         callbacks: {
-            onClick: config.callbacks?.onClick,
             onError: config.callbacks?.onError,
+            onEvent: config.callbacks?.onEvent,
             onSend: config.callbacks?.onSend
         },
         config,
@@ -92,6 +92,8 @@ const getQuestions = (config: IConfiguration): IQuestion[] => {
         });
     }
 
+    questions = getVisibleQuestions(questions);
+
     if (config.pick) {
         questions = questions.slice(0, config.pick);
     }
@@ -104,7 +106,21 @@ const getQuestions = (config: IConfiguration): IQuestion[] => {
         questions = [ ...questions, ...config.endQuestions ];
     }
 
-    return questions;
+    return getVisibleQuestions(questions);
+};
+
+/**
+ * Returns all the visible questions.
+ * @param {IQuestion[]} questions - The questions.
+ */
+const getVisibleQuestions = (questions: IQuestion[]): IQuestion[] => {
+    return questions.filter(question => {
+        if (!question.isVisible) {
+            return true;
+        }
+
+        return question.isVisible();
+    });
 };
 
 /**

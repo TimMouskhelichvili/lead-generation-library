@@ -14,8 +14,12 @@ export class LeadGenerationLibrary {
     public init (element: HTMLElement, config: IConfiguration): void {
         validateConfig(config);
 
-        const root = createRoot(element);
-        root.render(<App config={config} />);
+        const shadow = element.attachShadow({ mode: 'closed' });
+        const section = document.createElement('section');
+        shadow.appendChild(section);
+
+        const root = createRoot(shadow);
+        root.render(<App config={config} styleSection={section} />);
     }
 
     /**

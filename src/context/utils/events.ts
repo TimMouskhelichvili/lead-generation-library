@@ -17,7 +17,8 @@ const ALLOWED_EVENTS_WITH_RESULTS_AND_CURRENT: EventType[] = [
 
 
 const ALLOWED_EVENTS_WITH_RESULTS: EventType[] = [
-    'SUBMIT_QUIZ'
+    'SUBMIT_QUIZ',
+    'QUIZ_RESULTS_SEND'
 ];
 
 
@@ -30,18 +31,18 @@ export const sendEvent = (type: EventType, api: StoreApi<IContext>): void => {
     const state = api.getState();
 
     if (ALLOWED_EVENTS.includes(type)) {
-        state.callbacks?.onClick?.(type);
+        state.callbacks?.onEvent?.(type);
     }
 
     if (ALLOWED_EVENTS_WITH_RESULTS_AND_CURRENT.includes(type)) {
-        state.callbacks?.onClick?.(type, {
+        state.callbacks?.onEvent?.(type, {
             current: state.current,
             results: state.results.items
         });
     }
 
     if (ALLOWED_EVENTS_WITH_RESULTS.includes(type)) {
-        state.callbacks?.onClick?.(type, {
+        state.callbacks?.onEvent?.(type, {
             results: state.results.items
         });
     }

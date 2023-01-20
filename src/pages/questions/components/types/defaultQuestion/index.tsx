@@ -111,12 +111,12 @@ const useExplanation = (question: IQuestion): string => {
 
     if (hasMax && hasMin && max > min) {
         return locale.selectAnswersFromTo
-            .replace('{0}', String(question.min))
-            .replace('{1}', String(question.max));
+            .replace('{0}', String(min))
+            .replace('{1}', String(max));
     } else if (hasMin) {
-        return locale.selectAnswers.replace('{0}', String(question.min));
+        return locale.selectAnswers.replace('{0}', String(min));
     } else if (hasMax) {
-        return locale.selectAnswersUpTo.replace('{0}', String(question.max));
+        return locale.selectAnswersUpTo.replace('{0}', String(max));
     }
     
     return locale.selectOneAnswer;
@@ -134,7 +134,9 @@ const isMulti = (question: IQuestion): boolean => {
  * Returns the maximum number of accepted answers.
  * @param {IQuestion} question - The question.
  */
-const getMax = (question: IQuestion): number => question.max || question.min || 1;
+const getMax = (question: IQuestion): number => {
+    return question.max || question.correctAnswers?.length || question.min || 1;
+};
 
 /**
  * Returns the minimum number of accepted answers.

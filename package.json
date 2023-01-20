@@ -1,6 +1,6 @@
 {
   "name": "@tim.mouskhelichvili/lead-generation-library",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A lead generation library.",
   "main": "dist/main.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "verify:typescript": "tsc --noEmit --skipLibCheck",
     "verify:eslint": "eslint src --ext .tsx --ext .ts",
     "verify": "npm run verify:typescript && npm run verify:eslint",
-    "publish": "npm run build && clean-publish --access public"
+    "publish": "npm run build && npm publish"
   },
   "author": "Tim Mouskhelichvili",
   "license": "ISC",
@@ -19,7 +19,6 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",
-    "clean-publish": "^4.1.1",
     "html-webpack-plugin": "^5.5.0",
     "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.4.2",

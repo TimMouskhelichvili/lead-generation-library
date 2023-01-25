@@ -13,7 +13,6 @@ import { answerSchema } from 'src/schemas/answer';
 import { localeSchema } from 'src/schemas/locale';
 import { stylesSchema } from 'src/schemas/styles';
 import { configuration } from 'src/configuration';
-import { IStyles } from 'src/interfaces/IStyles';
 import { IAnswer } from 'src/interfaces/IAnswer';
 import { shuffle } from 'src/utils/helpers';
 

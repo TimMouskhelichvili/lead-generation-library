@@ -37,3 +37,14 @@ export const getDefaultTheme = (theme: MyTheme, styles: IStyles): DefaultTheme =
 	 
     return def;
 };
+
+/**
+ * Returns the styles.
+ * @param {Partial<IStyles>} styles - The styles.
+ */
+export const getStyles = (styles?: Partial<IStyles>): IStyles => ({
+    alignCenter: Boolean(styles?.alignCenter),
+    height: styles?.height,
+    primary: styles?.primary || configuration.primary,
+    primaryHovered: styles?.primaryHovered || configuration.primaryHovered
+});

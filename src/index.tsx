@@ -3,8 +3,9 @@ import React from 'react';
 import { IConfiguration } from 'src/interfaces/IConfiguration';
 import { PublicDispatch } from 'src/context/types/dispatch';
 import { validateConfig } from 'src/utils/defaults';
+import { IStyles } from 'src/interfaces/IStyles';
 import { App } from 'src/components/app';
-import { MyTheme } from './theme';
+import { MyTheme } from 'src/theme';
 
 export class LeadGenerationLibrary {
 
@@ -36,11 +37,19 @@ export class LeadGenerationLibrary {
     }
 
     /**
-	 * Changes the theme.
+	 * Sets the theme.
 	 * @param {MyTheme} value - The theme.
 	 */
-    public changeTheme (value: MyTheme): void {
+    public setTheme (value: MyTheme): void {
         this.dispatch?.({ type: 'CHANGE_THEME', value });
+    }
+
+    /**
+	 * Sets the styles.
+	 * @param {Partial<IStyles>} value - The styles.
+	 */
+    public setStyles (value: Partial<IStyles>): void {
+        this.dispatch?.({ type: 'CHANGE_STYLES', value });
     }
 	
     /**

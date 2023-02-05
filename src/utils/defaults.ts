@@ -15,6 +15,7 @@ import { stylesSchema } from 'src/schemas/styles';
 import { configuration } from 'src/configuration';
 import { IAnswer } from 'src/interfaces/IAnswer';
 import { shuffle } from 'src/utils/helpers';
+import { getStyles } from 'src/theme';
 
 /**
  * Validates the configuration.
@@ -70,12 +71,7 @@ export const getDefaultState = (config: IConfiguration): IContext => {
             title: config.results?.title
         },
         status: 'NOT_STARTED',
-        styles: {
-            alignCenter: Boolean(config.styles?.alignCenter),
-            height: config.styles?.height,
-            primary: config.styles?.primary || configuration.primary,
-            primaryHovered: config.styles?.primaryHovered || configuration.primaryHovered
-        },
+        styles: getStyles(config.styles),
         theme: config.theme || configuration.theme,
         title: config.title 
     };
